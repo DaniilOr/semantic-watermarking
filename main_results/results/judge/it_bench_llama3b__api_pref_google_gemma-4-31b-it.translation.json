@@ -1,0 +1,193 @@
+{
+  "judge": "google/gemma-4-31b-it",
+  "max_words": 800,
+  "mode": "preference",
+  "per_arm": {
+    "chain_reference": {
+      "n_prompts": 4860,
+      "order_consistency": 0.8179012345679012,
+      "tie_share": 0.23868312757201646,
+      "win_rate": 0.44351851851851853,
+      "win_rate_ci95": [
+        0.43220164609053496,
+        0.4536008230452675
+      ]
+    },
+    "clean_seed1": {
+      "n_prompts": 4860,
+      "order_consistency": 0.8222222222222222,
+      "tie_share": 0.24938271604938272,
+      "win_rate": 0.49547325102880657,
+      "win_rate_ci95": [
+        0.4845679012345679,
+        0.506224279835391
+      ]
+    },
+    "semstamp": {
+      "n_prompts": 4860,
+      "order_consistency": 0.8203703703703704,
+      "tie_share": 0.24187242798353908,
+      "win_rate": 0.4689814814814815,
+      "win_rate_ci95": [
+        0.4582304526748971,
+        0.4796309156378601
+      ]
+    }
+  },
+  "per_arm_domain": {
+    "chain_reference|it_dolly": {
+      "n_prompts": 1000,
+      "order_consistency": 0.777,
+      "tie_share": 0.1785,
+      "win_rate": 0.40875,
+      "win_rate_ci95": [
+        0.38474375,
+        0.43225
+      ]
+    },
+    "chain_reference|it_gsm8k": {
+      "n_prompts": 1319,
+      "order_consistency": 0.9097801364670205,
+      "tie_share": 0.6281273692191054,
+      "win_rate": 0.4501516300227445,
+      "win_rate_ci95": [
+        0.43517342683851407,
+        0.4649355572403336
+      ]
+    },
+    "chain_reference|it_ifeval": {
+      "n_prompts": 541,
+      "order_consistency": 0.7282809611829945,
+      "tie_share": 0.20794824399260628,
+      "win_rate": 0.46349353049907577,
+      "win_rate_ci95": [
+        0.4320586876155268,
+        0.49491682070240295
+      ]
+    },
+    "chain_reference|it_translation": {
+      "n_prompts": 1000,
+      "order_consistency": 0.814,
+      "tie_share": 0.008,
+      "win_rate": 0.416,
+      "win_rate_ci95": [
+        0.38774375,
+        0.44175
+      ]
+    },
+    "chain_reference|it_writingprompts": {
+      "n_prompts": 1000,
+      "order_consistency": 0.79,
+      "tie_share": 0.0325,
+      "win_rate": 0.48625,
+      "win_rate_ci95": [
+        0.45925,
+        0.51375
+      ]
+    },
+    "clean_seed1|it_dolly": {
+      "n_prompts": 1000,
+      "order_consistency": 0.759,
+      "tie_share": 0.177,
+      "win_rate": 0.4895,
+      "win_rate_ci95": [
+        0.46575,
+        0.51525
+      ]
+    },
+    "clean_seed1|it_gsm8k": {
+      "n_prompts": 1319,
+      "order_consistency": 0.9234268385140257,
+      "tie_share": 0.6626231993934799,
+      "win_rate": 0.4874905231235785,
+      "win_rate_ci95": [
+        0.47289613343442,
+        0.5024687263078089
+      ]
+    },
+    "clean_seed1|it_ifeval": {
+      "n_prompts": 541,
+      "order_consistency": 0.7818853974121996,
+      "tie_share": 0.21719038817005545,
+      "win_rate": 0.5023105360443623,
+      "win_rate_ci95": [
+        0.46950092421441775,
+        0.5355822550831792
+      ]
+    },
+    "clean_seed1|it_translation": {
+      "n_prompts": 1000,
+      "order_consistency": 0.827,
+      "tie_share": 0.008,
+      "win_rate": 0.4965,
+      "win_rate_ci95": [
+        0.4685,
+        0.525
+      ]
+    },
+    "clean_seed1|it_writingprompts": {
+      "n_prompts": 1000,
+      "order_consistency": 0.769,
+      "tie_share": 0.0355,
+      "win_rate": 0.50725,
+      "win_rate_ci95": [
+        0.4805,
+        0.53425
+      ]
+    },
+    "semstamp|it_dolly": {
+      "n_prompts": 1000,
+      "order_consistency": 0.76,
+      "tie_share": 0.1615,
+      "win_rate": 0.45125,
+      "win_rate_ci95": [
+        0.42749375,
+        0.47575
+      ]
+    },
+    "semstamp|it_gsm8k": {
+      "n_prompts": 1319,
+      "order_consistency": 0.9196360879454132,
+      "tie_share": 0.6633813495072024,
+      "win_rate": 0.48218347232752085,
+      "win_rate_ci95": [
+        0.46739954510993176,
+        0.49753601213040183
+      ]
+    },
+    "semstamp|it_ifeval": {
+      "n_prompts": 541,
+      "order_consistency": 0.7578558225508318,
+      "tie_share": 0.17375231053604437,
+      "win_rate": 0.45933456561922364,
+      "win_rate_ci95": [
+        0.4256007393715342,
+        0.4930799445471349
+      ]
+    },
+    "semstamp|it_translation": {
+      "n_prompts": 1000,
+      "order_consistency": 0.807,
+      "tie_share": 0.009,
+      "win_rate": 0.4505,
+      "win_rate_ci95": [
+        0.42124375000000003,
+        0.477
+      ]
+    },
+    "semstamp|it_writingprompts": {
+      "n_prompts": 1000,
+      "order_consistency": 0.797,
+      "tie_share": 0.036,
+      "win_rate": 0.493,
+      "win_rate_ci95": [
+        0.46325,
+        0.51975
+      ]
+    }
+  },
+  "usage": {
+    "completion_tokens": 45978,
+    "prompt_tokens": 4211539
+  }
+}

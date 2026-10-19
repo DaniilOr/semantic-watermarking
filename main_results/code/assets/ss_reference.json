@@ -1,0 +1,22 @@
+{
+  "note": "Reference configuration for further semantic-watermark experiments (user decision 2026-09-24). New arms change ONE thing relative to this and are compared against its measured numbers.",
+  "arm_label": "chain_sent_blk4x16_push1_m0.02",
+  "generate": "scripts/steered_semstamp.py --run-name <run> --arm chain --unit sent --W 16 --block 4 --best-of 16 --steer marginal --beta 1 --stop-margin 0.02",
+  "defaults_in_effect": {"steer_topk": 20, "steer_clip": 1.0, "steer_target": 0.05, "rep_n": 4, "lmbd": 0.25, "sent_max_tokens": 64,
+                         "temperature": 0.8, "top_p": 0.95, "top_k": 50, "max_new_tokens": 512},
+  "key": {"rand_seed": 1234, "hash_key": 15485863, "lsh_dim": 3},
+  "embedder": "/l/users/daniil.orel/hf_cache/hub/models--AbeHou--SemStamp-c4-sbert/snapshots/a77dce8530e100ac1101981e4be390546c1cb282",
+  "generator": {"model": "meta-llama/Llama-3.2-3B-Instruct", "revision": "0cb88a4f764b7a12671c53f0838cd831a0843b95", "dtype": "bf16"},
+  "detector": {"statistic": "z_chain (scripts/semstamp_detect.py)", "threshold_1pct": 2.8368, "null": "runs/null_calibration + runs/ss_llama3b_null base (1,800 texts)"},
+  "measured_150_held_out": {
+    "source": "runs/detect_ss_llama3b.json (job 276099), runs/quality_vs_clean_ss_llama3b.json (job 276100), runs/fact_probe_ss_llama3b_r6.json, docs/preregistration.md amendment 10 outcome",
+    "detected_clean": 0.913, "detected_clean_ci": [0.857, 0.949], "t_cont": 0.847,
+    "reorder": 0.204, "resegment": 0.190, "para_light": 0.260, "para_strong": 0.073,
+    "candidates_per_unit": 12.59, "units_reaching_cap": 0.65, "seconds_per_text": 111.6,
+    "judge_win_vs_clean": 0.433, "judge_win_ci": [0.368, 0.503], "flaw_measures_outside_clean_band": 0,
+    "novel_numbers": 0.18, "novel_entities": 0.54
+  },
+  "shipped_semstamp_same_prompts": {"detected_clean": 0.680, "para_light": 0.273, "para_strong": 0.073, "reorder": 0.123, "resegment": 0.096,
+                                     "candidates_per_sentence": 60.2, "seconds_per_text": 319.5, "judge_win_vs_clean": 0.485},
+  "reference_sbatch": "slurm/conf/ss_chain_merged.sbatch (lane pmsent)"
+}

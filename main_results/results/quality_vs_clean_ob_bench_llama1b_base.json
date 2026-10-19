@@ -1,0 +1,272 @@
+{
+ "n_clean_draws": 2,
+ "n_prompts": 1500,
+ "margin": 0.1,
+ "metrics": {
+  "major_flaw": {
+   "label": "share of texts with a major flaw",
+   "clean_mean": 0.7963333333333333,
+   "clean_per_draw": [
+    0.7986666666666666,
+    0.794
+   ],
+   "clean_band95": [
+    0.7753333333333333,
+    0.8160166666666667
+   ],
+   "arms": {
+    "ob_bench_llama1b_base/chain_reference": {
+     "n": 1493,
+     "value": 0.8204956463496316,
+     "inside_clean_band": false,
+     "diff": 0.023777628935030142,
+     "diff_ci95": [
+      0.003014065639651708,
+      0.044541192230408574
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "ob_bench_llama1b_base/clean_seed1": {
+     "n": 1500,
+     "value": 0.794,
+     "inside_clean_band": true,
+     "diff": -0.0023333333333333335,
+     "diff_ci95": [
+      -0.015,
+      0.01
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "ob_bench_llama1b_base/semstamp": {
+     "n": 1500,
+     "value": 0.836,
+     "inside_clean_band": false,
+     "diff": 0.03966666666666667,
+     "diff_ci95": [
+      0.01865833333333334,
+      0.06066666666666667
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    }
+   }
+  },
+  "n_flaws": {
+   "label": "flaws per text",
+   "clean_mean": 1.4593333333333334,
+   "clean_per_draw": [
+    1.4533333333333334,
+    1.4653333333333334
+   ],
+   "clean_band95": [
+    1.4173333333333333,
+    1.502
+   ],
+   "arms": {
+    "ob_bench_llama1b_base/chain_reference": {
+     "n": 1493,
+     "value": 1.4842598794373745,
+     "inside_clean_band": true,
+     "diff": 0.024447421299397188,
+     "diff_ci95": [
+      -0.018754186202277295,
+      0.0666443402545211
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    },
+    "ob_bench_llama1b_base/clean_seed1": {
+     "n": 1500,
+     "value": 1.4653333333333334,
+     "inside_clean_band": true,
+     "diff": 0.006,
+     "diff_ci95": [
+      -0.02033333333333333,
+      0.03300833333333336
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    },
+    "ob_bench_llama1b_base/semstamp": {
+     "n": 1500,
+     "value": 1.5606666666666666,
+     "inside_clean_band": false,
+     "diff": 0.10133333333333333,
+     "diff_ci95": [
+      0.056,
+      0.14567500000000003
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    }
+   }
+  },
+  "not_on_task": {
+   "label": "share not fully on task",
+   "clean_mean": 0.11533333333333333,
+   "clean_per_draw": [
+    0.11066666666666666,
+    0.12
+   ],
+   "clean_band95": [
+    0.09933333333333333,
+    0.132
+   ],
+   "arms": {
+    "ob_bench_llama1b_base/chain_reference": {
+     "n": 1493,
+     "value": 0.07970529135967849,
+     "inside_clean_band": false,
+     "diff": -0.0361687876758205,
+     "diff_ci95": [
+      -0.052243804420629605,
+      -0.020763563295378432
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "ob_bench_llama1b_base/clean_seed1": {
+     "n": 1500,
+     "value": 0.12,
+     "inside_clean_band": true,
+     "diff": 0.004666666666666667,
+     "diff_ci95": [
+      -0.005,
+      0.015
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "ob_bench_llama1b_base/semstamp": {
+     "n": 1500,
+     "value": 0.11866666666666667,
+     "inside_clean_band": true,
+     "diff": 0.0033333333333333335,
+     "diff_ci95": [
+      -0.013333333333333334,
+      0.02033333333333333
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    }
+   }
+  },
+  "insertions_or_drift": {
+   "label": "share with unrelated insertions or topic drift",
+   "clean_mean": 0.13166666666666665,
+   "clean_per_draw": [
+    0.12,
+    0.14333333333333334
+   ],
+   "clean_band95": [
+    0.114,
+    0.14866666666666667
+   ],
+   "arms": {
+    "ob_bench_llama1b_base/chain_reference": {
+     "n": 1493,
+     "value": 0.11118553248492967,
+     "inside_clean_band": false,
+     "diff": -0.021098459477561955,
+     "diff_ci95": [
+      -0.03951774949765573,
+      -0.002344273275284662
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "ob_bench_llama1b_base/clean_seed1": {
+     "n": 1500,
+     "value": 0.14333333333333334,
+     "inside_clean_band": true,
+     "diff": 0.011666666666666667,
+     "diff_ci95": [
+      0.0013333333333333333,
+      0.022
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "ob_bench_llama1b_base/semstamp": {
+     "n": 1500,
+     "value": 0.12666666666666668,
+     "inside_clean_band": true,
+     "diff": -0.005,
+     "diff_ci95": [
+      -0.024,
+      0.014341666666666697
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    }
+   }
+  },
+  "quality": {
+   "label": "mean 1-5 score",
+   "clean_mean": 1.6666666666666667,
+   "clean_per_draw": [
+    1.6553333333333333,
+    1.678
+   ],
+   "clean_band95": [
+    1.6093333333333333,
+    1.726
+   ],
+   "arms": {
+    "ob_bench_llama1b_base/chain_reference": {
+     "n": 1493,
+     "value": 1.6141995981245814,
+     "inside_clean_band": true,
+     "diff": -0.05157401205626256,
+     "diff_ci95": [
+      -0.11319490957803081,
+      0.00871567314132622
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    },
+    "ob_bench_llama1b_base/clean_seed1": {
+     "n": 1500,
+     "value": 1.678,
+     "inside_clean_band": true,
+     "diff": 0.011333333333333334,
+     "diff_ci95": [
+      -0.025333333333333333,
+      0.04833333333333333
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    },
+    "ob_bench_llama1b_base/semstamp": {
+     "n": 1500,
+     "value": 1.5473333333333332,
+     "inside_clean_band": false,
+     "diff": -0.11933333333333333,
+     "diff_ci95": [
+      -0.179,
+      -0.059333333333333335
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    }
+   }
+  }
+ }
+}

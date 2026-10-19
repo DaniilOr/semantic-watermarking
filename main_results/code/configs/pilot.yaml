@@ -1,0 +1,541 @@
+# Development profile (spec Section 12 schema, extended).  All model-backed roles: Qwen/Qwen3.5-0.8B only.
+experiment: prefix_world_semantic_watermark_qwen35_08b_v11
+seed: 20260911
+models:
+  shared:
+    id: Qwen/Qwen3.5-0.8B
+    revision: 2fc06364715b967f1860aea9cf38778875588b17   # resolved immutable sha (HF lastModified 2026-03-02)
+    model_class: Qwen3_5ForCausalLM
+    text_only: true
+    enable_thinking: false
+    dtype: float32           # see config.py: bf16 batched-vs-single discrepancy (0.037 nats/token) would trip the 100x floor rule
+  share_weights_across_roles: true
+  roles: [generator, world_keyed, world_neutral, key_rarity, paraphraser, optional_judge]
+arms: [base, budget_control, passive_prefix, llm_global, llm_local]
+data:
+  domains: [writingprompts, dolly, c4_realnewslike]
+  domain_weights: [0.3333333333, 0.3333333333, 0.3333333334]
+  groups_per_domain:
+    smoke: 4
+    scale_fit: 30
+    dev: 50
+    null_calibration: 700
+    null_test: 700
+    positive_test: 200
+    donor_pool: 200
+    ablation: 20          # per domain -> 60 dev prompts for ablations
+  domain_budgets:            # extra domains prepared with `prepare-data --domains <d> --append`
+    mbpp: {code: 400}
+  writingprompts_candidate_cap: 6000
+  reference_cap_tokens: 512
+  allow_shortfall: false
+keys:
+  families: [common_single, rare_single, common_multi, rare_multi, random_digits]
+  development_per_family: 4
+  confirmation_per_selected_family: 16
+  decoys_per_family: 20          # decoy bank for the secondary rank detector (100 keys), never used as targets
+  neutral_prefix: "No additional background is specified."
+scoring:
+  primary: llm_global
+  max_input_tokens: 4096
+  initial_mode: full_teacher_forcing
+  reductions_dtype: float32
+  system_template: "You are a helpful assistant.\nBackground: {prefix}"
+  user_message: "Write a coherent response."
+generation:
+  unit: tokens
+  unit_tokens: 16
+  sentence_cap_tokens: 64
+  candidates: 8
+  beta: 2.0
+  standardized_gain_clip: 5.0
+  active_fraction: 1.0
+  temperature: 0.8
+  top_p: 0.95
+  top_k: 0
+  min_new_tokens: 64
+  max_new_tokens: 512
+  dev_seeds: [0]
+  confirmation_seeds: [0, 1]
+arm_aliases:                # named variants of the extension arm (see docs/approach_and_results.md, recommended settings)
+  wm_neutral: poe_steer     # presence detection: neutral push, adaptive ramp
+  wm_decoy: poe_steer       # attribution: decoy-relative push, beta 15
+  wm_code: poe_steer        # code variant: entropy gate opened (code is low-entropy), neutral push beta 10
+  wm_code2: poe_steer       # code variant 2: gate fully open (full beta from 0.3 nats), pass rate is the guard
+  wm_cross: poe_steer       # cross-model: generation by the main model, world by the reference model
+  wm_cross30: poe_steer     # cross-model, stronger push (the vocabulary bridge attenuates the nominal beta)
+  wm_cross60: poe_steer
+  wm_cross30f: poe_steer    # same push, adaptive controller OFF: the mark is spread over the whole text
+  wm_cross30s: poe_steer    # controller ON with a length-aware target (scaled by sqrt(budget/512))
+  wm_span1: poe_steer       # (1) every span steered toward the SAME key (controller resets each span)
+  wm_spanrot: poe_steer     # (2) spans ROTATE through 4 keys, so parts of one text carry different keys
+  # Three control laws aimed at the SAME marking rate (0.219 nats-contrast per sd per token, i.e. a whole-text
+  # t of 7 at 1024 tokens).  A target is a rate x sqrt(n), so each estimator needs its own number:
+  # whole text n=1024 -> 7.0 | sliding window n=128 -> 2.5 | span reset n=64 -> 1.75.
+  # Detection-vs-quality TRADE-OFF at the standard length (512 tokens): the controller's target is the one real knob.
+  # wm_w*: whole-text statistic, target T = 6 / 8 (target 4 is wm_cross30, already measured).
+  # wm_r*: sliding 128-token window at the same marking RATES (target = T * sqrt(128/512) = T/2).
+  wm_w6: poe_steer
+  wm_w8: poe_steer
+  # Constant push, NO controller: distortion grows with beta^2 but signal at most linearly, so for a given amount of
+  # signal a thin, even push is the least damaging delivery.  The adaptive controller delivers it in bursts instead
+  # (top 10% of tokens carry 74-84% of the distortion; first 16 tokens get ~3.5x the mean push).
+  wm_c4: poe_steer
+  wm_c8: poe_steer
+  wm_c12: poe_steer
+  wm_c16: poe_steer
+  wm_c20: poe_steer
+  wm_c8w: poe_steer         # constant push with a 48-token warm-up: the opening of the answer is left (almost) alone
+  wm_c16w: poe_steer
+  wm_c12wg: poe_steer       # + semantic guard: no push on tokens with raw contrast > 1.0 (the key's own neighbourhood)
+  wm_c20wg: poe_steer
+  wm_r4: poe_steer
+  wm_r6: poe_steer
+  wm_r8: poe_steer
+  wm_l_whole: poe_steer     # running mean over the whole text (the current default; the integrator that stalls)
+  wm_l_span: poe_steer      # statistic reset every 64 tokens (sawtooth window)
+  wm_l_win: poe_steer       # statistic over a sliding 128-token window (regulates the rate continuously)
+  # <arm>_rot: the same delivery, but the key switches every 128 tokens through 4 keys (long-text rerun after selection)
+  wm_cross30_rot: poe_steer
+  wm_c4_rot: poe_steer
+  wm_c8_rot: poe_steer
+  wm_c12_rot: poe_steer
+  wm_c16_rot: poe_steer
+  wm_c20_rot: poe_steer
+  wm_c8w_rot: poe_steer
+  wm_c16w_rot: poe_steer
+  wm_c12wg_rot: poe_steer
+  wm_c20wg_rot: poe_steer
+  # frontier fill-in after the early read of the sweep: the quality bar is crossed between 4 and 8; the guard is isolated from the warm-up
+  wm_c4g: poe_steer
+  wm_c4g_rot: poe_steer
+  wm_c6: poe_steer
+  wm_c6_rot: poe_steer
+  wm_c6g: poe_steer
+  wm_c6g_rot: poe_steer
+  wm_c8g: poe_steer
+  wm_c8g_rot: poe_steer
+  wm_c2: poe_steer          # constant push 2: can a LONGER key make an even gentler push detectable?
+  wm_c0: poe_steer          # CONTROL: the watermarking sampler with ZERO push -- must be indistinguishable from the clean arm
+  wm_c25: poe_steer         # strength fill-in between the setting with no measurable cost (2) and the usable one (4)
+  wm_c3: poe_steer
+  wm_c35: poe_steer
+  wm_w64_c3: poe_steer      # BOUNDED reference context (last 64-95 tokens): the key's influence no longer decays along the text
+  wm_w64_c25: poe_steer
+arm_overrides:
+  wm_w64_c3: {poe_beta: 3.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_ref_window: 64, poe_ref_stride: 32}
+  wm_w64_c25: {poe_beta: 2.5, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_ref_window: 64, poe_ref_stride: 32}
+  wm_c25: {poe_beta: 2.5, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b}
+  wm_c3: {poe_beta: 3.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b}
+  wm_c35: {poe_beta: 3.5, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b}
+  wm_c0: {poe_beta: 0.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b}
+  wm_c2: {poe_beta: 2.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b}
+  wm_c4g: {poe_beta: 4.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_contrast_max: 1.0}
+  wm_c4g_rot: {poe_beta: 4.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_contrast_max: 1.0, poe_span_tokens: 128, poe_key_rotation: 4}
+  wm_c6: {poe_beta: 6.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b}
+  wm_c6_rot: {poe_beta: 6.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_span_tokens: 128, poe_key_rotation: 4}
+  wm_c6g: {poe_beta: 6.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_contrast_max: 1.0}
+  wm_c6g_rot: {poe_beta: 6.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_contrast_max: 1.0, poe_span_tokens: 128, poe_key_rotation: 4}
+  wm_c8g: {poe_beta: 8.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_contrast_max: 1.0}
+  wm_c8g_rot: {poe_beta: 8.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_contrast_max: 1.0, poe_span_tokens: 128, poe_key_rotation: 4}
+  wm_cross30_rot: {poe_beta: 30.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true, poe_block_repeat_n: 4, poe_adapt: tstat, poe_t_target: 4.0, poe_reference: pythia410m, poe_span_tokens: 128, poe_key_rotation: 4}
+  wm_c4_rot: {poe_beta: 4.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true, poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_span_tokens: 128, poe_key_rotation: 4}
+  wm_c8_rot: {poe_beta: 8.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true, poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_span_tokens: 128, poe_key_rotation: 4}
+  wm_c12_rot: {poe_beta: 12.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true, poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_span_tokens: 128, poe_key_rotation: 4}
+  wm_c16_rot: {poe_beta: 16.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true, poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_span_tokens: 128, poe_key_rotation: 4}
+  wm_c20_rot: {poe_beta: 20.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true, poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_span_tokens: 128, poe_key_rotation: 4}
+  wm_c8w_rot: {poe_beta: 8.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true, poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_warmup_tokens: 48, poe_span_tokens: 128, poe_key_rotation: 4}
+  wm_c16w_rot: {poe_beta: 16.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true, poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_warmup_tokens: 48, poe_span_tokens: 128, poe_key_rotation: 4}
+  wm_c12wg_rot: {poe_beta: 12.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true, poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_warmup_tokens: 48, poe_contrast_max: 1.0, poe_span_tokens: 128, poe_key_rotation: 4}
+  wm_c20wg_rot: {poe_beta: 20.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true, poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_warmup_tokens: 48, poe_contrast_max: 1.0, poe_span_tokens: 128, poe_key_rotation: 4}
+  budget_control: {matched_scoring: false}   # cheap uniform arm in dev; matched-overhead variant measured in smoke
+  wm_neutral: {poe_beta: 10.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+               poe_adapt: tstat, poe_t_target: 4.0}
+  wm_decoy: {poe_beta: 15.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+             poe_adapt: bang, poe_t_target: 4.0, poe_block_repeat_n: 4, poe_contrast: decoys, poe_n_decoys: 3}
+  wm_code: {poe_beta: 10.0, poe_clip: 0.5, poe_entropy_min: 0.05, poe_entropy_ref: 1.0, poe_steer_eos: false, poe_block_key_tokens: true,
+            poe_block_repeat_n: 4, poe_adapt: tstat, poe_t_target: 4.0}
+  wm_code2: {poe_beta: 10.0, poe_clip: 0.5, poe_entropy_min: 0.0, poe_entropy_ref: 0.3, poe_steer_eos: false, poe_block_key_tokens: true,
+             poe_block_repeat_n: 4, poe_adapt: tstat, poe_t_target: 4.0}
+  wm_cross: {poe_beta: 10.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+             poe_block_repeat_n: 4, poe_adapt: tstat, poe_t_target: 4.0, poe_reference: pythia410m}
+  wm_cross30: {poe_beta: 30.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+               poe_block_repeat_n: 4, poe_adapt: tstat, poe_t_target: 4.0, poe_reference: pythia410m}
+  wm_cross60: {poe_beta: 60.0, poe_clip: 1.0, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+               poe_block_repeat_n: 4, poe_adapt: tstat, poe_t_target: 4.0, poe_reference: pythia410m}
+  wm_cross30f: {poe_beta: 30.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+                poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b}
+  wm_cross30s: {poe_beta: 30.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+                poe_block_repeat_n: 4, poe_adapt: tstat, poe_t_target: 4.0, poe_t_target_scale: budget,
+                poe_reference: llama1b}
+  wm_span1: {poe_beta: 30.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+             poe_block_repeat_n: 4, poe_adapt: tstat, poe_t_target: 4.0, poe_span_tokens: 128, poe_reference: llama1b}
+  wm_w6: {poe_beta: 30.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: tstat, poe_reference: llama1b, poe_t_target: 6.0}
+  wm_w8: {poe_beta: 30.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: tstat, poe_reference: llama1b, poe_t_target: 8.0}
+  wm_c4: {poe_beta: 4.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b}
+  wm_c8: {poe_beta: 8.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b}
+  wm_c12: {poe_beta: 12.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b}
+  wm_c16: {poe_beta: 16.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b}
+  wm_c20: {poe_beta: 20.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b}
+  wm_c8w: {poe_beta: 8.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_warmup_tokens: 48}
+  wm_c16w: {poe_beta: 16.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_warmup_tokens: 48}
+  wm_c12wg: {poe_beta: 12.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_warmup_tokens: 48, poe_contrast_max: 1.0}
+  wm_c20wg: {poe_beta: 20.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: none, poe_reference: llama1b, poe_warmup_tokens: 48, poe_contrast_max: 1.0}
+  wm_r4: {poe_beta: 30.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: tstat, poe_reference: llama1b, poe_t_target: 2.0, poe_t_window: 128}
+  wm_r6: {poe_beta: 30.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: tstat, poe_reference: llama1b, poe_t_target: 3.0, poe_t_window: 128}
+  wm_r8: {poe_beta: 30.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+          poe_block_repeat_n: 4, poe_adapt: tstat, poe_reference: llama1b, poe_t_target: 4.0, poe_t_window: 128}
+  wm_l_whole: {poe_beta: 30.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+              poe_block_repeat_n: 4, poe_adapt: tstat, poe_reference: llama1b, poe_t_target: 7.0}
+  wm_l_span: {poe_beta: 30.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+              poe_block_repeat_n: 4, poe_adapt: tstat, poe_reference: llama1b, poe_t_target: 1.75, poe_span_tokens: 64}
+  wm_l_win: {poe_beta: 30.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+              poe_block_repeat_n: 4, poe_adapt: tstat, poe_reference: llama1b, poe_t_target: 2.5, poe_t_window: 128}
+  wm_spanrot: {poe_beta: 30.0, poe_clip: 0.5, poe_entropy_min: 0.2, poe_steer_eos: false, poe_block_key_tokens: true,
+               poe_block_repeat_n: 4, poe_adapt: tstat, poe_t_target: 4.0, poe_span_tokens: 128,
+               poe_key_rotation: 4, poe_reference: llama1b}
+reference:                  # cross-model steering (labelled extension): a SECOND checkpoint as the keyed/neutral world
+  # An instruction-tuned reference from another family: a base model (pythia-410m, tried first) barely reacts to the
+  # "Background:" line, so its keyed-minus-neutral contrast on clean text is a large, variable, generic offset
+  # (mean +0.57, sd 1.28) that buries the key-specific signal.
+  id: meta-llama/Llama-3.2-1B-Instruct
+  revision: 9213176726f574b556790deb65791e0c5aa438b6
+  cache_dir: /l/users/daniil.orel/hf_cache/hub  # home quota is full; /l is visible from the compute nodes (not from the login node)
+  dtype: float32
+  max_input_tokens: 4096          # long-generation experiment: 1024-token texts plus the context wrapper
+  context_style: chat                            # use the reference model's own chat template
+  # previous references: HuggingFaceTB/SmolLM2-360M-Instruct @a10cc151 (80-90% detection), EleutherAI/pythia-410m (base LM, 2%)
+  context_template: "{system}\n\n{user}\n\n"    # used only when context_style is plain
+fit_scorer:
+  pool_lengths: [32, 96, 192, 384]
+  pool_lengths_toy: [16, 32]
+  unit_settings:            # primary unit only for the first fit; add the ablation units below and re-run fit-scorer (pools/scores resume)
+    - {unit: tokens, unit_tokens: 16, sentence_cap_tokens: 64}
+  #  - {unit: tokens, unit_tokens: 8, sentence_cap_tokens: 64}
+  #  - {unit: tokens, unit_tokens: 32, sentence_cap_tokens: 64}
+  #  - {unit: sentence, unit_tokens: 16, sentence_cap_tokens: 64}
+  objectives: [global, local]
+  candidates: 8
+  repeat_subset: 12
+detection:
+  alpha: 0.01
+  min_visible_tokens: 32
+  null_cohorts: [generator, human_web]
+  combine_tail_ranks: maximum
+  minimum_calibration_per_cohort: 1000
+evaluation:
+  bootstrap_replicates: 2000
+  length_views: [64, 128, 256, 512]
+  max_ablation_configs: 12
+  ablation_prompts_per_config: 60
+  max_confirmation_configs: 2
+attacks:
+  strong_paraphrase_seed0_prompts: 600
+  wider_suite_seed0_prompts: 150
+  crop_fractions: [0.5, 0.75]
+  dilution_added_length_fractions: [0.25, 0.5, 1.0]
+runtime:
+  resume: true
+  automatic_hyperparameter_search: false
+  require_budget_manifest_for_large_runs: true
+  paid_api_calls: 0
+  device: auto
+  kernels: torch            # reference PyTorch DeltaNet path (fla kernels measured: same bf16-level discrepancy; not needed at 0.8B)
+  fork_prefix_cache: false  # flipped to true only after `selftest` passes the fork-equality check
+  scoring_token_budget: 24576
+  head_chunk_positions: 256
+paths:
+  root: .
+  data_raw: data/raw
+  data_prepared: data/prepared
+  assets: assets
+  runs: runs
+stages:
+  smoke:
+    partition: smoke
+    seeds: [0]
+    keys: development
+    scales: assets/scales_smoke.json
+    generation: {max_new_tokens: 64, min_new_tokens: 16, candidates: 4}
+    toy_calibration: true
+  dev:
+    partition: dev
+    seeds: [0]
+    keys: development
+    scales: assets/scales.json
+  ablation:
+    partition: dev
+    ablation_subset_only: true
+    arms: [llm_global]
+    seeds: [0]
+    keys: development
+    scales: assets/scales.json
+  ablation_rw:              # same 60-prompt subset, seed-phrase keys (random_words family; make-keys --set randomwords)
+    partition: dev
+    ablation_subset_only: true
+    arms: [base, poe_steer]
+    seeds: [0]
+    keys: randomwords
+    scales: assets/scales.json
+  ablation_rw128:           # length sweep: same subset and keys, outputs capped at 128 / 256 tokens (base too)
+    partition: dev
+    ablation_subset_only: true
+    arms: [base, poe_steer]
+    seeds: [0]
+    keys: randomwords
+    scales: assets/scales.json
+    generation: {max_new_tokens: 128, min_new_tokens: 32}
+  ablation_rw256:
+    partition: dev
+    ablation_subset_only: true
+    arms: [base, poe_steer]
+    seeds: [0]
+    keys: randomwords
+    scales: assets/scales.json
+    generation: {max_new_tokens: 256, min_new_tokens: 48}
+  ablation_rwr:             # same subset, low-incidence seed-phrase keys (make-keys --set randomwords_rare)
+    partition: dev
+    ablation_subset_only: true
+    arms: [base, poe_steer]
+    seeds: [0]
+    keys: randomwords_rare
+    scales: assets/scales.json
+  # ---- larger-sample experiment (<= 5k outputs): 16 fresh seed-phrase keys, two frozen configurations ----
+  conf_null:                # 400 clean texts per text domain (+ their human references) -> calibration cohorts
+    partition: null_calibration
+    arms: [base]
+    seeds: [0]
+    keys: confirmation
+    limit_per_domain: 400
+  conf_pos:                 # 600 fresh prompts x (base + 2 configurations); evaluated at the frozen calibration
+    partition: positive_test
+    arms: [base, wm_neutral, wm_decoy]
+    seeds: [0]
+    keys: confirmation
+    scales: assets/scales.json
+    frozen: true
+  code:                     # MBPP: 400 tasks x (base + 2 configurations); executable tests = functional quality
+    partition: code
+    domains: [mbpp]
+    arms: [base, wm_neutral, wm_decoy]
+    seeds: [0]
+    keys: confirmation
+    scales: assets/scales.json
+    generation: {max_new_tokens: 512, min_new_tokens: 0}
+    frozen: true
+  code100:                  # code follow-up: 100 of the 400 tasks, opened entropy gate (200 outputs)
+    partition: code
+    domains: [mbpp]
+    arms: [base, wm_code]
+    seeds: [0]
+    keys: confirmation
+    scales: assets/scales.json
+    limit_per_domain: 100
+    generation: {max_new_tokens: 512, min_new_tokens: 0}
+  code100b:                 # code follow-up 2: same 100 tasks, gate fully open
+    partition: code
+    domains: [mbpp]
+    arms: [base, wm_code2]
+    seeds: [0]
+    keys: confirmation
+    scales: assets/scales.json
+    limit_per_domain: 100
+    generation: {max_new_tokens: 512, min_new_tokens: 0}
+  ablation_cross_long:      # LONG generations (1024-token budget, 256 minimum): detection vs length, controller on/off
+    partition: dev
+    ablation_subset_only: true
+    arms: [base, wm_cross30, wm_cross30f, wm_cross30s]
+    seeds: [0]
+    keys: randomwords
+    scales: assets/scales.json
+    generation: {max_new_tokens: 1024, min_new_tokens: 256}
+  conf_cross:               # HELD-OUT confirmation of the cross-model watermark: unseen prompts, fresh keys, run once
+    partition: positive_test
+    limit_per_domain: 50
+    arms: [base, wm_cross30, wm_c4, wm_c8, wm_c12, wm_c16, wm_c20, wm_c8w, wm_c16w, wm_c12wg, wm_c20wg, wm_c4g, wm_c6, wm_c6g, wm_c8g, wm_w64_c3]   # the job passes --arms base,wm_cross30,<chosen>
+    seeds: [0]
+    keys: confirmation
+    scales: assets/scales.json
+  conf_window:              # HELD-OUT confirmation of the bounded reference context (same prompts and keys as conf_cross), run once
+    partition: positive_test
+    limit_per_domain: 50
+    arms: [wm_w64_c3]
+    seeds: [0]
+    keys: confirmation
+    scales: assets/scales.json
+  long_c:                   # long texts with the CHOSEN delivery: same key throughout vs four rotating keys (after selection)
+    partition: dev
+    ablation_subset_only: true
+    arms: [base, wm_cross30, wm_c4, wm_c8, wm_c12, wm_c16, wm_c20, wm_c8w, wm_c16w, wm_c12wg, wm_c20wg, wm_cross30_rot, wm_c4_rot, wm_c8_rot, wm_c12_rot, wm_c16_rot, wm_c20_rot, wm_c8w_rot, wm_c16w_rot, wm_c12wg_rot, wm_c20wg_rot, wm_c4g, wm_c6, wm_c6g, wm_c8g, wm_c4g_rot, wm_c6_rot, wm_c6g_rot, wm_c8g_rot]
+    seeds: [0]
+    keys: randomwords
+    scales: assets/scales.json
+    generation: {max_new_tokens: 1024, min_new_tokens: 256}
+  clean_draws:              # extra independent CLEAN draws of the same 60 dev prompts: the yardstick for "no worse than clean"
+    partition: dev
+    ablation_subset_only: true
+    arms: [base]
+    seeds: [1, 2, 3]
+    keys: randomwords
+    scales: assets/scales.json
+  keylen4:                 # key-length experiment: 6 disjoint keys of exactly 4 words, same 60 dev prompts
+    partition: dev
+    ablation_subset_only: true
+    arms: [wm_c4, wm_c2]
+    seeds: [0]
+    keys: len4
+    scales: assets/scales.json
+  keylen8:                 # key-length experiment: 6 disjoint keys of exactly 8 words, same 60 dev prompts
+    partition: dev
+    ablation_subset_only: true
+    arms: [wm_c4, wm_c2]
+    seeds: [0]
+    keys: len8
+    scales: assets/scales.json
+  keylen10:                 # key-length experiment: 6 disjoint keys of exactly 10 words, same 60 dev prompts
+    partition: dev
+    ablation_subset_only: true
+    arms: [wm_c4, wm_c2]
+    seeds: [0]
+    keys: len10
+    scales: assets/scales.json
+  keylen16:                 # key-length experiment: 6 disjoint keys of exactly 16 words, same 60 dev prompts
+    partition: dev
+    ablation_subset_only: true
+    arms: [wm_c4, wm_c2]
+    seeds: [0]
+    keys: len16
+    scales: assets/scales.json
+  control_b0:               # pipeline control: beta = 0 through the cross-model sampler, same 60 prompts, 4-word keys
+    partition: dev
+    ablation_subset_only: true
+    arms: [wm_c0]
+    seeds: [0]
+    keys: len4
+    scales: assets/scales.json
+  strength_fill:            # 512-token budget, 10-word keys: where between beta 2 and 4 does quality start to go?
+    partition: dev
+    ablation_subset_only: true
+    arms: [wm_c25, wm_c3, wm_c35]
+    seeds: [0]
+    keys: len10
+    scales: assets/scales.json
+  window_dev:               # bounded reference context vs the whole-text arms (same prompts, keys and budget as strength_fill)
+    partition: dev
+    ablation_subset_only: true
+    arms: [wm_w64_c3, wm_w64_c25]
+    seeds: [0]
+    keys: len10
+    scales: assets/scales.json
+  long_story:               # LONG stories: does the gentle push become detectable when the text is long?
+    partition: dev
+    domains: [writingprompts]
+    arms: [base, wm_c2, wm_c3]
+    seeds: [0]
+    keys: len10
+    scales: assets/scales.json
+    generation: {max_new_tokens: 2048, min_new_tokens: 512}
+  long_story_clean2:        # a SECOND clean draw of the same long-story prompts: the clean-vs-clean reference level
+    partition: dev
+    domains: [writingprompts]
+    arms: [base]
+    seeds: [1]
+    keys: len10
+    scales: assets/scales.json
+    generation: {max_new_tokens: 2048, min_new_tokens: 512}
+  long_null:                # length-matched clean texts: the threshold for long texts must come from long clean texts
+    partition: null_calibration
+    domains: [writingprompts]
+    limit_per_domain: 600
+    arms: [base]
+    seeds: [0]
+    keys: len10
+    scales: assets/scales.json
+    generation: {max_new_tokens: 2048, min_new_tokens: 512}
+  ablation_tradeoff:        # detection vs quality as the controller's target rises (standard 512-token budget)
+    partition: dev
+    ablation_subset_only: true
+    arms: [base, wm_cross30, wm_c4, wm_c8, wm_c12, wm_c16, wm_c20, wm_c8w, wm_c16w, wm_c12wg, wm_c20wg, wm_c4g, wm_c6, wm_c6g, wm_c8g]   # incumbent vs constant push (+ warm-up, + semantic guard)
+    seeds: [0]
+    keys: randomwords
+    scales: assets/scales.json
+  ablation_long768:         # genuinely long texts (EOS blocked until 768) -- which control law holds the mark?
+    partition: dev
+    ablation_subset_only: true
+    arms: [base, wm_l_whole, wm_l_span, wm_l_win]
+    seeds: [0]
+    keys: randomwords
+    scales: assets/scales.json
+    generation: {max_new_tokens: 1024, min_new_tokens: 768}
+  ablation_spans:           # (1) same key in every span vs (2) keys rotating across spans, 1024-token stories
+    partition: dev
+    ablation_subset_only: true
+    arms: [base, wm_span1, wm_spanrot]
+    seeds: [0]
+    keys: randomwords
+    scales: assets/scales.json
+    generation: {max_new_tokens: 1024, min_new_tokens: 256}
+  ablation_cross_llama:     # cross-model with Llama-3.2-1B-Instruct as the world
+    partition: dev
+    ablation_subset_only: true
+    arms: [base, wm_cross30, wm_cross60]
+    seeds: [0]
+    keys: randomwords
+    scales: assets/scales.json
+  ablation_cross_instr:     # cross-model with an INSTRUCTION-TUNED reference (smollm2-360m-instruct)
+    partition: dev
+    ablation_subset_only: true
+    arms: [base, wm_cross30, wm_cross60]
+    seeds: [0]
+    keys: randomwords
+    scales: assets/scales.json
+  ablation_cross_beta:      # cross-model strength sweep (the bridge attenuates beta: 10 cost only -0.02 nats)
+    partition: dev
+    ablation_subset_only: true
+    arms: [base, wm_cross30, wm_cross60]
+    seeds: [0]
+    keys: randomwords
+    scales: assets/scales.json
+  ablation_cross:           # cross-model steering on the 60-prompt dev subset, seed-phrase keys
+    partition: dev
+    ablation_subset_only: true
+    arms: [base, wm_cross]
+    seeds: [0]
+    keys: randomwords
+    scales: assets/scales.json
+  null_calibration: {partition: null_calibration, arms: [base], seeds: [0], keys: confirmation}
+  null_test: {partition: null_test, arms: [base], seeds: [0], keys: confirmation}
+  positive_test: {partition: positive_test, seeds: [0, 1], keys: confirmation, scales: assets/scales.json}
+budgets:
+  dev: {wall_hours: 24}
+  null_calibration: {wall_hours: 36}
+  null_test: {wall_hours: 36}
+  positive_test: {wall_hours: 48}

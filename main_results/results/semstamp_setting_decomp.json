@@ -1,0 +1,40 @@
+{
+ "semstamp_setting_opt13b_ss|chain_reference|sp_realnews": {
+  "n_texts": 1000,
+  "gen_sentences_per_text": 13.065,
+  "det_scored_per_text": 12.029,
+  "det_in_mask": 0.9581843877296533,
+  "det_mean_z": 5.632345474967977,
+  "aligned_share": 0.969,
+  "gen_in_mask": 0.9593037712391215
+ },
+ "semstamp_setting_opt13b_ss|semstamp|sp_realnews": {
+  "n_texts": 1000,
+  "gen_sentences_per_text": 13.912,
+  "det_scored_per_text": 12.852,
+  "det_in_mask": 0.9070183629007158,
+  "det_mean_z": 5.397505666325301,
+  "aligned_share": 0.945,
+  "gen_maxed_out_share": 0.11134272570442784,
+  "gen_trials_per_sentence": 29.70615296147211
+ },
+ "semstamp_setting_llama3b_base|chain_reference|sp_realnews": {
+  "n_texts": 1000,
+  "gen_sentences_per_text": 9.164,
+  "det_scored_per_text": 8.097,
+  "det_in_mask": 0.9801160923798938,
+  "det_mean_z": 4.741250218926552,
+  "aligned_share": 0.936,
+  "gen_in_mask": 0.9838314551690348
+ },
+ "semstamp_setting_llama3b_base|semstamp|sp_realnews": {
+  "n_texts": 1000,
+  "gen_sentences_per_text": 9.681,
+  "det_scored_per_text": 8.622,
+  "det_in_mask": 0.9125492925075388,
+  "det_mean_z": 4.4234865737604805,
+  "aligned_share": 0.948,
+  "gen_maxed_out_share": 0.10381158971180664,
+  "gen_trials_per_sentence": 31.202148538374136
+ }
+}

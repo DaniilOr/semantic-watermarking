@@ -1,0 +1,110 @@
+{
+ "base|gsm8k": {
+  "n": 1319,
+  "accuracy": 0.7854435178165277,
+  "ci": [
+   0.7624767412535165,
+   0.8067524090846645
+  ],
+  "stated_answer": 0.9620924943138741
+ },
+ "base|ifeval": {
+  "n": 541,
+  "returncode": 0,
+  "strict": {
+   "prompt_level": 0.6192236598890942,
+   "instruction_level": 0.7266187050359713,
+   "n_prompts": 541
+  },
+  "loose": {
+   "prompt_level": 0.6765249537892791,
+   "instruction_level": 0.7685851318944844,
+   "n_prompts": 541
+  }
+ },
+ "base|translation": {
+  "n": 1000,
+  "chrf": 62.47443289088938
+ },
+ "chain_reference|gsm8k": {
+  "n": 1319,
+  "accuracy": 0.7445034116755117,
+  "ci": [
+   0.720279381145841,
+   0.7673073412553897
+  ],
+  "stated_answer": 0.8794541319181198
+ },
+ "chain_reference|ifeval": {
+  "n": 541,
+  "returncode": 0,
+  "strict": {
+   "prompt_level": 0.5970425138632163,
+   "instruction_level": 0.7050359712230215,
+   "n_prompts": 541
+  },
+  "loose": {
+   "prompt_level": 0.6395563770794824,
+   "instruction_level": 0.7386091127098321,
+   "n_prompts": 541
+  }
+ },
+ "chain_reference|translation": {
+  "n": 1000,
+  "chrf": 61.013714482127824
+ },
+ "clean_seed1|gsm8k": {
+  "n": 1319,
+  "accuracy": 0.7710386656557998,
+  "ci": [
+   0.7475955388072008,
+   0.7929075720716828
+  ],
+  "stated_answer": 0.9461713419257013
+ },
+ "clean_seed1|ifeval": {
+  "n": 541,
+  "returncode": 0,
+  "strict": {
+   "prompt_level": 0.6210720887245841,
+   "instruction_level": 0.7278177458033573,
+   "n_prompts": 541
+  },
+  "loose": {
+   "prompt_level": 0.6635859519408502,
+   "instruction_level": 0.7577937649880095,
+   "n_prompts": 541
+  }
+ },
+ "clean_seed1|translation": {
+  "n": 1000,
+  "chrf": 62.23138764106892
+ },
+ "semstamp|gsm8k": {
+  "n": 1319,
+  "accuracy": 0.775587566338135,
+  "ci": [
+   0.7522906906883955,
+   0.7972838010723717
+  ],
+  "stated_answer": 0.9332827899924185
+ },
+ "semstamp|ifeval": {
+  "n": 541,
+  "returncode": 0,
+  "strict": {
+   "prompt_level": 0.6284658040665434,
+   "instruction_level": 0.7242206235011991,
+   "n_prompts": 541
+  },
+  "loose": {
+   "prompt_level": 0.6691312384473198,
+   "instruction_level": 0.7565947242206235,
+   "n_prompts": 541
+  }
+ },
+ "semstamp|translation": {
+  "n": 1000,
+  "chrf": 61.68478122392223
+ }
+}

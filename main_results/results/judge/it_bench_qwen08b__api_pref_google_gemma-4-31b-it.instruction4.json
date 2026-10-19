@@ -1,0 +1,163 @@
+{
+  "judge": "google/gemma-4-31b-it",
+  "max_words": 800,
+  "mode": "preference",
+  "per_arm": {
+    "chain_reference": {
+      "n_prompts": 3860,
+      "order_consistency": 0.7528497409326425,
+      "tie_share": 0.3895077720207254,
+      "win_rate": 0.4180699481865285,
+      "win_rate_ci95": [
+        0.40764248704663214,
+        0.428824481865285
+      ]
+    },
+    "clean_seed1": {
+      "n_prompts": 3860,
+      "order_consistency": 0.7642487046632125,
+      "tie_share": 0.40479274611398963,
+      "win_rate": 0.49838082901554404,
+      "win_rate_ci95": [
+        0.4875647668393782,
+        0.5093264248704663
+      ]
+    },
+    "semstamp": {
+      "n_prompts": 3860,
+      "order_consistency": 0.7613989637305699,
+      "tie_share": 0.39248704663212436,
+      "win_rate": 0.44520725388601035,
+      "win_rate_ci95": [
+        0.43380667098445597,
+        0.4560249352331606
+      ]
+    }
+  },
+  "per_arm_domain": {
+    "chain_reference|it_dolly": {
+      "n_prompts": 1000,
+      "order_consistency": 0.695,
+      "tie_share": 0.4855,
+      "win_rate": 0.44375,
+      "win_rate_ci95": [
+        0.425,
+        0.46325
+      ]
+    },
+    "chain_reference|it_gsm8k": {
+      "n_prompts": 1319,
+      "order_consistency": 0.8347232752084913,
+      "tie_share": 0.29378316906747537,
+      "win_rate": 0.37774829416224415,
+      "win_rate_ci95": [
+        0.3567048900682335,
+        0.39878695981804396
+      ]
+    },
+    "chain_reference|it_ifeval": {
+      "n_prompts": 541,
+      "order_consistency": 0.7855822550831792,
+      "tie_share": 0.2911275415896488,
+      "win_rate": 0.45147874306839186,
+      "win_rate_ci95": [
+        0.4195933456561922,
+        0.48290203327171904
+      ]
+    },
+    "chain_reference|it_writingprompts": {
+      "n_prompts": 1000,
+      "order_consistency": 0.685,
+      "tie_share": 0.473,
+      "win_rate": 0.4275,
+      "win_rate_ci95": [
+        0.40749375,
+        0.44675624999999997
+      ]
+    },
+    "clean_seed1|it_dolly": {
+      "n_prompts": 1000,
+      "order_consistency": 0.713,
+      "tie_share": 0.4705,
+      "win_rate": 0.50275,
+      "win_rate_ci95": [
+        0.48299375,
+        0.5225
+      ]
+    },
+    "clean_seed1|it_gsm8k": {
+      "n_prompts": 1319,
+      "order_consistency": 0.8635329795299469,
+      "tie_share": 0.3711144806671721,
+      "win_rate": 0.4982941622441243,
+      "win_rate_ci95": [
+        0.4785822592873389,
+        0.5197119029567855
+      ]
+    },
+    "clean_seed1|it_ifeval": {
+      "n_prompts": 541,
+      "order_consistency": 0.7578558225508318,
+      "tie_share": 0.27171903881700554,
+      "win_rate": 0.4805914972273567,
+      "win_rate_ci95": [
+        0.45009242144177447,
+        0.512014787430684
+      ]
+    },
+    "clean_seed1|it_writingprompts": {
+      "n_prompts": 1000,
+      "order_consistency": 0.688,
+      "tie_share": 0.4555,
+      "win_rate": 0.50375,
+      "win_rate_ci95": [
+        0.48424375000000003,
+        0.5245
+      ]
+    },
+    "semstamp|it_dolly": {
+      "n_prompts": 1000,
+      "order_consistency": 0.708,
+      "tie_share": 0.479,
+      "win_rate": 0.452,
+      "win_rate_ci95": [
+        0.43175,
+        0.47125
+      ]
+    },
+    "semstamp|it_gsm8k": {
+      "n_prompts": 1319,
+      "order_consistency": 0.8597422289613343,
+      "tie_share": 0.3260045489006823,
+      "win_rate": 0.44086429112964365,
+      "win_rate_ci95": [
+        0.4209581122062169,
+        0.46228203184230476
+      ]
+    },
+    "semstamp|it_ifeval": {
+      "n_prompts": 541,
+      "order_consistency": 0.7763401109057301,
+      "tie_share": 0.2828096118299446,
+      "win_rate": 0.4399260628465804,
+      "win_rate_ci95": [
+        0.4075785582255083,
+        0.47181146025878
+      ]
+    },
+    "semstamp|it_writingprompts": {
+      "n_prompts": 1000,
+      "order_consistency": 0.677,
+      "tie_share": 0.453,
+      "win_rate": 0.447,
+      "win_rate_ci95": [
+        0.428,
+        0.46725
+      ]
+    }
+  },
+  "usage": {
+    "completion_tokens": 179324,
+    "prompt_tokens": 22939996
+  }
+}

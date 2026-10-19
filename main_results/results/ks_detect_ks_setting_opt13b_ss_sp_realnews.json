@@ -1,0 +1,187 @@
+{
+  "results": {
+    "ks_setting_opt13b_ss|base|sp_realnews": {
+      "n": 0,
+      "t_cont:auroc_vs_human": null,
+      "t_cont:human_0.1%": null,
+      "t_cont:human_1%": null,
+      "t_cont:model_1%": null,
+      "t_segcont:auroc_vs_human": null,
+      "t_segcont:human_0.1%": null,
+      "t_segcont:human_1%": null,
+      "t_segcont:model_1%": null,
+      "z_chain:auroc_vs_human": null,
+      "z_chain:human_0.1%": null,
+      "z_chain:human_1%": null,
+      "z_chain:model_1%": null,
+      "z_segchain:auroc_vs_human": null,
+      "z_segchain:human_0.1%": null,
+      "z_segchain:human_1%": null,
+      "z_segchain:model_1%": null
+    },
+    "ks_setting_opt13b_ss|chain_kmeans|sp_realnews": {
+      "n": 1000,
+      "t_cont:auroc_vs_human": 0.9992314814814814,
+      "t_cont:human_0.1%": {
+        "ci": [
+          0.9482214412243672,
+          0.9721631937967565
+        ],
+        "rate": 0.9619619619619619
+      },
+      "t_cont:human_1%": {
+        "ci": [
+          0.980390903582284,
+          0.9938407198366088
+        ],
+        "rate": 0.988988988988989
+      },
+      "t_cont:model_1%": null,
+      "t_segcont:auroc_vs_human": 0.925792042042042,
+      "t_segcont:human_0.1%": {
+        "ci": [
+          0.2004018910373251,
+          0.2521537269186911
+        ],
+        "rate": 0.22522522522522523
+      },
+      "t_segcont:human_1%": {
+        "ci": [
+          0.5175618521407985,
+          0.5791632936848232
+        ],
+        "rate": 0.5485485485485485
+      },
+      "t_segcont:model_1%": null,
+      "z_chain:auroc_vs_human": 0.999170920920921,
+      "z_chain:human_0.1%": {
+        "ci": [
+          0.9459364551493892,
+          0.9704595140644927
+        ],
+        "rate": 0.95995995995996
+      },
+      "z_chain:human_1%": {
+        "ci": [
+          0.980390903582284,
+          0.9938407198366088
+        ],
+        "rate": 0.988988988988989
+      },
+      "z_chain:model_1%": null,
+      "z_segchain:auroc_vs_human": 0.9108713713713714,
+      "z_segchain:human_0.1%": {
+        "ci": [
+          0.1424879932312595,
+          0.18841331760387137
+        ],
+        "rate": 0.16416416416416416
+      },
+      "z_segchain:human_1%": {
+        "ci": [
+          0.35078739439785966,
+          0.4108898236194223
+        ],
+        "rate": 0.38038038038038036
+      },
+      "z_segchain:model_1%": null
+    },
+    "ks_setting_opt13b_ss|ksemstamp|sp_realnews": {
+      "n": 1000,
+      "t_cont:auroc_vs_human": 0.99420925,
+      "t_cont:human_0.1%": {
+        "ci": [
+          0.9157875981239373,
+          0.9468983077002487
+        ],
+        "rate": 0.933
+      },
+      "t_cont:human_1%": {
+        "ci": [
+          0.9669140836251823,
+          0.9854274013262284
+        ],
+        "rate": 0.978
+      },
+      "t_cont:model_1%": null,
+      "t_segcont:auroc_vs_human": 0.913478,
+      "t_segcont:human_0.1%": {
+        "ci": [
+          0.14987601887484397,
+          0.1966344265978282
+        ],
+        "rate": 0.172
+      },
+      "t_segcont:human_1%": {
+        "ci": [
+          0.4630942141573671,
+          0.5249517086256698
+        ],
+        "rate": 0.494
+      },
+      "t_segcont:model_1%": null,
+      "z_chain:auroc_vs_human": 0.99699025,
+      "z_chain:human_0.1%": {
+        "ci": [
+          0.9213116000993365,
+          0.9513360367389853
+        ],
+        "rate": 0.938
+      },
+      "z_chain:human_1%": {
+        "ci": [
+          0.9681094652438844,
+          0.9862243659103536
+        ],
+        "rate": 0.979
+      },
+      "z_chain:model_1%": null,
+      "z_segchain:auroc_vs_human": 0.90005975,
+      "z_segchain:human_0.1%": {
+        "ci": [
+          0.10592590591609449,
+          0.14694426802369845
+        ],
+        "rate": 0.125
+      },
+      "z_segchain:human_1%": {
+        "ci": [
+          0.3152039757998436,
+          0.37399001655911024
+        ],
+        "rate": 0.344
+      },
+      "z_segchain:model_1%": null
+    }
+  },
+  "thresholds": {
+    "sp_realnews:t_cont": {
+      "human_0.1%": 0.0871211705034124,
+      "human_1%": 0.035124293341250286,
+      "model_1%": null,
+      "n_human": 2000,
+      "n_model": 0
+    },
+    "sp_realnews:t_segcont": {
+      "human_0.1%": 0.08142508802731264,
+      "human_1%": 0.02341431167355022,
+      "model_1%": null,
+      "n_human": 2000,
+      "n_model": 0
+    },
+    "sp_realnews:z_chain": {
+      "human_0.1%": 3.709704134011871,
+      "human_1%": 2.836832573067901,
+      "model_1%": null,
+      "n_human": 2000,
+      "n_model": 0
+    },
+    "sp_realnews:z_segchain": {
+      "human_0.1%": 4.08248290463863,
+      "human_1%": 2.8867513459481287,
+      "model_1%": null,
+      "n_human": 2000,
+      "n_model": 0
+    }
+  }
+}

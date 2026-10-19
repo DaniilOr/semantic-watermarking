@@ -1,0 +1,187 @@
+{
+  "results": {
+    "ks_sp_bench_llama1b|base|sp_booksum": {
+      "n": 0,
+      "t_cont:auroc_vs_human": null,
+      "t_cont:human_0.1%": null,
+      "t_cont:human_1%": null,
+      "t_cont:model_1%": null,
+      "t_segcont:auroc_vs_human": null,
+      "t_segcont:human_0.1%": null,
+      "t_segcont:human_1%": null,
+      "t_segcont:model_1%": null,
+      "z_chain:auroc_vs_human": null,
+      "z_chain:human_0.1%": null,
+      "z_chain:human_1%": null,
+      "z_chain:model_1%": null,
+      "z_segchain:auroc_vs_human": null,
+      "z_segchain:human_0.1%": null,
+      "z_segchain:human_1%": null,
+      "z_segchain:model_1%": null
+    },
+    "ks_sp_bench_llama1b|chain_kmeans|sp_booksum": {
+      "n": 1000,
+      "t_cont:auroc_vs_human": 0.9941767371601209,
+      "t_cont:human_0.1%": {
+        "ci": [
+          0.577534634969329,
+          0.6381465725565206
+        ],
+        "rate": 0.608257804632427
+      },
+      "t_cont:human_1%": {
+        "ci": [
+          0.8627885867107666,
+          0.9026289079042255
+        ],
+        "rate": 0.8841893252769386
+      },
+      "t_cont:model_1%": null,
+      "t_segcont:auroc_vs_human": 0.7982675702811245,
+      "t_segcont:human_0.1%": {
+        "ci": [
+          0.002146095759868181,
+          0.011697697096920335
+        ],
+        "rate": 0.0050200803212851405
+      },
+      "t_segcont:human_1%": {
+        "ci": [
+          0.1250402078205877,
+          0.16884794406267065
+        ],
+        "rate": 0.14558232931726908
+      },
+      "t_segcont:model_1%": null,
+      "z_chain:auroc_vs_human": 0.9677074521651561,
+      "z_chain:human_0.1%": {
+        "ci": [
+          0.06611560594870977,
+          0.10025144775370395
+        ],
+        "rate": 0.08157099697885196
+      },
+      "z_chain:human_1%": {
+        "ci": [
+          0.44242073250140346,
+          0.504411341922457
+        ],
+        "rate": 0.473313192346425
+      },
+      "z_chain:model_1%": null,
+      "z_segchain:auroc_vs_human": 0.7885803212851406,
+      "z_segchain:human_0.1%": {
+        "ci": [
+          0.004075470628087128,
+          0.015769272779268595
+        ],
+        "rate": 0.008032128514056224
+      },
+      "z_segchain:human_1%": {
+        "ci": [
+          0.0850821112911036,
+          0.12279241603402472
+        ],
+        "rate": 0.10240963855421686
+      },
+      "z_segchain:model_1%": null
+    },
+    "ks_sp_bench_llama1b|ksemstamp|sp_booksum": {
+      "n": 1000,
+      "t_cont:auroc_vs_human": 0.9847477477477478,
+      "t_cont:human_0.1%": {
+        "ci": [
+          0.5557742664915777,
+          0.6167355296716448
+        ],
+        "rate": 0.5865865865865866
+      },
+      "t_cont:human_1%": {
+        "ci": [
+          0.7853501122484869,
+          0.8338902543258555
+        ],
+        "rate": 0.8108108108108109
+      },
+      "t_cont:model_1%": null,
+      "t_segcont:auroc_vs_human": 0.8059689378757515,
+      "t_segcont:human_0.1%": {
+        "ci": [
+          0.000549731910078149,
+          0.007277453545187433
+        ],
+        "rate": 0.002004008016032064
+      },
+      "t_segcont:human_1%": {
+        "ci": [
+          0.12478688396412342,
+          0.16851457207443604
+        ],
+        "rate": 0.14529058116232466
+      },
+      "t_segcont:model_1%": null,
+      "z_chain:auroc_vs_human": 0.9501423923923924,
+      "z_chain:human_0.1%": {
+        "ci": [
+          0.04078732347398377,
+          0.0687430350592083
+        ],
+        "rate": 0.05305305305305305
+      },
+      "z_chain:human_1%": {
+        "ci": [
+          0.40499447326154503,
+          0.4663710544548959
+        ],
+        "rate": 0.43543543543543545
+      },
+      "z_chain:model_1%": null,
+      "z_segchain:auroc_vs_human": 0.7991598196392785,
+      "z_segchain:human_0.1%": {
+        "ci": [
+          0.0034016363990678963,
+          0.01440716690876041
+        ],
+        "rate": 0.0070140280561122245
+      },
+      "z_segchain:human_1%": {
+        "ci": [
+          0.08216086827855547,
+          0.1193097035164269
+        ],
+        "rate": 0.09919839679358718
+      },
+      "z_segchain:model_1%": null
+    }
+  },
+  "thresholds": {
+    "sp_booksum:t_cont": {
+      "human_0.1%": 0.10307593548146007,
+      "human_1%": 0.0680731306944131,
+      "model_1%": null,
+      "n_human": 2000,
+      "n_model": 0
+    },
+    "sp_booksum:t_segcont": {
+      "human_0.1%": 0.15,
+      "human_1%": 0.10670044707297306,
+      "model_1%": null,
+      "n_human": 2000,
+      "n_model": 0
+    },
+    "sp_booksum:z_chain": {
+      "human_0.1%": 6.009252125773315,
+      "human_1%": 4.45435403187374,
+      "model_1%": null,
+      "n_human": 2000,
+      "n_model": 0
+    },
+    "sp_booksum:z_segchain": {
+      "human_0.1%": 5.196152422706632,
+      "human_1%": 4.426352063787131,
+      "model_1%": null,
+      "n_human": 2000,
+      "n_model": 0
+    }
+  }
+}

@@ -1,0 +1,59 @@
+# Smoke profile: 12 prompts (4 per domain), at most 64 new tokens, N=4, all five arms, toy scales/calibration.
+# Identical to pilot.yaml except the smoke stage settings are the defaults for `generate --stage smoke`.
+experiment: prefix_world_semantic_watermark_qwen35_08b_v11_smoke
+seed: 20260911
+models:
+  shared:
+    id: Qwen/Qwen3.5-0.8B
+    revision: 2fc06364715b967f1860aea9cf38778875588b17
+    model_class: Qwen3_5ForCausalLM
+    text_only: true
+    enable_thinking: false
+    dtype: float32           # see config.py: bf16 batched-vs-single discrepancy (0.037 nats/token) would trip the 100x floor rule
+  share_weights_across_roles: true
+  roles: [generator, world_keyed, world_neutral, key_rarity, paraphraser, optional_judge]
+arms: [base, budget_control, passive_prefix, llm_global, llm_local]
+data:
+  domains: [writingprompts, dolly, c4_realnewslike]
+  groups_per_domain: {smoke: 4, scale_fit: 30, dev: 50, null_calibration: 700, null_test: 700, positive_test: 200, donor_pool: 200, ablation: 20}
+keys:
+  development_per_family: 4
+scoring:
+  max_input_tokens: 4096
+generation:
+  unit: tokens
+  unit_tokens: 16
+  candidates: 4
+  beta: 2.0
+  min_new_tokens: 16
+  max_new_tokens: 64
+arm_overrides:
+  budget_control: {matched_scoring: true}   # smoke measures the matched-overhead uniform arm
+fit_scorer:
+  pool_lengths_toy: [16, 32]
+  unit_settings:
+    - {unit: tokens, unit_tokens: 16, sentence_cap_tokens: 64}
+  objectives: [global, local]
+  candidates: 4
+  repeat_subset: 6
+runtime:
+  device: auto
+  kernels: torch            # reference PyTorch DeltaNet path (fla kernels measured: same bf16-level discrepancy; not needed at 0.8B)
+  fork_prefix_cache: false
+paths:
+  root: .
+stages:
+  smoke_rw:                 # smoke with seed-phrase keys (random_words family, key set randomwords)
+    partition: smoke
+    seeds: [0]
+    keys: randomwords
+    scales: assets/scales_smoke.json
+    generation: {max_new_tokens: 64, min_new_tokens: 16, candidates: 4}
+    toy_calibration: true
+  smoke:
+    partition: smoke
+    seeds: [0]
+    keys: development
+    scales: assets/scales_smoke.json
+    generation: {max_new_tokens: 64, min_new_tokens: 16, candidates: 4}
+    toy_calibration: true

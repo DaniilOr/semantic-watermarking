@@ -1,0 +1,647 @@
+{
+  "content_hash": "c701981fb0137484",
+  "entries": {
+    "common_multi|tokens16|global|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.03974971826131975,
+      "sigma": 0.03974971826131975,
+      "status": "ok"
+    },
+    "common_multi|tokens16|global|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.03974971826131975,
+      "sigma": 0.03974971826131975,
+      "status": "ok"
+    },
+    "common_multi|tokens16|global|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.03974971826131975,
+      "sigma": 0.03974971826131975,
+      "status": "ok"
+    },
+    "common_multi|tokens16|global|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.03974971826131975,
+      "sigma": 0.03974971826131975,
+      "status": "ok"
+    },
+    "common_multi|tokens16|local|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.1747493938602408,
+      "sigma": 0.1747493938602408,
+      "status": "ok"
+    },
+    "common_multi|tokens16|local|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.1747493938602408,
+      "sigma": 0.1747493938602408,
+      "status": "ok"
+    },
+    "common_multi|tokens16|local|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.1747493938602408,
+      "sigma": 0.1747493938602408,
+      "status": "ok"
+    },
+    "common_multi|tokens16|local|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.1747493938602408,
+      "sigma": 0.1747493938602408,
+      "status": "ok"
+    },
+    "common_multi|tokens16|specific|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.01752010097094407,
+      "sigma": 0.01752010097094407,
+      "status": "ok"
+    },
+    "common_multi|tokens16|specific|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.01752010097094407,
+      "sigma": 0.01752010097094407,
+      "status": "ok"
+    },
+    "common_multi|tokens16|specific|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.01752010097094407,
+      "sigma": 0.01752010097094407,
+      "status": "ok"
+    },
+    "common_multi|tokens16|specific|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.01752010097094407,
+      "sigma": 0.01752010097094407,
+      "status": "ok"
+    },
+    "common_single|tokens16|global|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.03176449767308706,
+      "sigma": 0.03176449767308706,
+      "status": "ok"
+    },
+    "common_single|tokens16|global|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.03176449767308706,
+      "sigma": 0.03176449767308706,
+      "status": "ok"
+    },
+    "common_single|tokens16|global|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.03176449767308706,
+      "sigma": 0.03176449767308706,
+      "status": "ok"
+    },
+    "common_single|tokens16|global|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.03176449767308706,
+      "sigma": 0.03176449767308706,
+      "status": "ok"
+    },
+    "common_single|tokens16|local|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.1333984404773499,
+      "sigma": 0.1333984404773499,
+      "status": "ok"
+    },
+    "common_single|tokens16|local|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.1333984404773499,
+      "sigma": 0.1333984404773499,
+      "status": "ok"
+    },
+    "common_single|tokens16|local|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.1333984404773499,
+      "sigma": 0.1333984404773499,
+      "status": "ok"
+    },
+    "common_single|tokens16|local|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.1333984404773499,
+      "sigma": 0.1333984404773499,
+      "status": "ok"
+    },
+    "common_single|tokens16|specific|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.018887916777282576,
+      "sigma": 0.018887916777282576,
+      "status": "ok"
+    },
+    "common_single|tokens16|specific|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.018887916777282576,
+      "sigma": 0.018887916777282576,
+      "status": "ok"
+    },
+    "common_single|tokens16|specific|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.018887916777282576,
+      "sigma": 0.018887916777282576,
+      "status": "ok"
+    },
+    "common_single|tokens16|specific|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.018887916777282576,
+      "sigma": 0.018887916777282576,
+      "status": "ok"
+    },
+    "random_digits|tokens16|global|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.0100328855595778,
+      "sigma": 0.0100328855595778,
+      "status": "ok"
+    },
+    "random_digits|tokens16|global|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.0100328855595778,
+      "sigma": 0.0100328855595778,
+      "status": "ok"
+    },
+    "random_digits|tokens16|global|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.0100328855595778,
+      "sigma": 0.0100328855595778,
+      "status": "ok"
+    },
+    "random_digits|tokens16|global|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.0100328855595778,
+      "sigma": 0.0100328855595778,
+      "status": "ok"
+    },
+    "random_digits|tokens16|local|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.08239135802054352,
+      "sigma": 0.08239135802054352,
+      "status": "ok"
+    },
+    "random_digits|tokens16|local|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.08239135802054352,
+      "sigma": 0.08239135802054352,
+      "status": "ok"
+    },
+    "random_digits|tokens16|local|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.08239135802054352,
+      "sigma": 0.08239135802054352,
+      "status": "ok"
+    },
+    "random_digits|tokens16|local|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.08239135802054352,
+      "sigma": 0.08239135802054352,
+      "status": "ok"
+    },
+    "random_digits|tokens16|specific|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.003718988204609414,
+      "sigma": 0.003718988204609414,
+      "status": "ok"
+    },
+    "random_digits|tokens16|specific|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.003718988204609414,
+      "sigma": 0.003718988204609414,
+      "status": "ok"
+    },
+    "random_digits|tokens16|specific|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.003718988204609414,
+      "sigma": 0.003718988204609414,
+      "status": "ok"
+    },
+    "random_digits|tokens16|specific|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.003718988204609414,
+      "sigma": 0.003718988204609414,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|global|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.03901361935175382,
+      "sigma": 0.03901361935175382,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|global|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.03901361935175382,
+      "sigma": 0.03901361935175382,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|global|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.03901361935175382,
+      "sigma": 0.03901361935175382,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|global|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.03901361935175382,
+      "sigma": 0.03901361935175382,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|local|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.19315497524405367,
+      "sigma": 0.19315497524405367,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|local|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.19315497524405367,
+      "sigma": 0.19315497524405367,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|local|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.19315497524405367,
+      "sigma": 0.19315497524405367,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|local|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.19315497524405367,
+      "sigma": 0.19315497524405367,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|specific|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.018787775677117556,
+      "sigma": 0.018787775677117556,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|specific|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.018787775677117556,
+      "sigma": 0.018787775677117556,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|specific|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.018787775677117556,
+      "sigma": 0.018787775677117556,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|specific|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.018787775677117556,
+      "sigma": 0.018787775677117556,
+      "status": "ok"
+    },
+    "rare_single|tokens16|global|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.022466914544928482,
+      "sigma": 0.022466914544928482,
+      "status": "ok"
+    },
+    "rare_single|tokens16|global|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.022466914544928482,
+      "sigma": 0.022466914544928482,
+      "status": "ok"
+    },
+    "rare_single|tokens16|global|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.022466914544928482,
+      "sigma": 0.022466914544928482,
+      "status": "ok"
+    },
+    "rare_single|tokens16|global|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.022466914544928482,
+      "sigma": 0.022466914544928482,
+      "status": "ok"
+    },
+    "rare_single|tokens16|local|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.12380062316898097,
+      "sigma": 0.12380062316898097,
+      "status": "ok"
+    },
+    "rare_single|tokens16|local|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.12380062316898097,
+      "sigma": 0.12380062316898097,
+      "status": "ok"
+    },
+    "rare_single|tokens16|local|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.12380062316898097,
+      "sigma": 0.12380062316898097,
+      "status": "ok"
+    },
+    "rare_single|tokens16|local|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.12380062316898097,
+      "sigma": 0.12380062316898097,
+      "status": "ok"
+    },
+    "rare_single|tokens16|specific|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 12,
+      "raw_median_sd": 0.022114091392573438,
+      "sigma": 0.022114091392573438,
+      "status": "ok"
+    },
+    "rare_single|tokens16|specific|[128,256)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.022114091392573438,
+      "sigma": 0.022114091392573438,
+      "status": "ok"
+    },
+    "rare_single|tokens16|specific|[256,inf)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.022114091392573438,
+      "sigma": 0.022114091392573438,
+      "status": "ok"
+    },
+    "rare_single|tokens16|specific|[64,128)": {
+      "fallback_from": "[0,64)",
+      "n_pools": 12,
+      "raw_median_sd": 0.022114091392573438,
+      "sigma": 0.022114091392573438,
+      "status": "ok"
+    }
+  },
+  "fitted_on": "smoke",
+  "floor": 0.00047396946077499225,
+  "meta": {
+    "backend": {
+      "attn_implementation": "sdpa",
+      "device": "cuda",
+      "dtype": "float32",
+      "extra": {
+        "allow_tf32": false,
+        "cuda": "12.8",
+        "deltanet_implementation": "torch",
+        "eos_ids": [
+          248046,
+          248044
+        ],
+        "fork_prefix_cache": false,
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "kernels_policy": "torch",
+        "layer_types": [
+          "linear_attention",
+          "linear_attention",
+          "linear_attention",
+          "full_attention",
+          "linear_attention",
+          "linear_attention",
+          "linear_attention",
+          "full_attention",
+          "linear_attention",
+          "linear_attention",
+          "linear_attention",
+          "full_attention",
+          "linear_attention",
+          "linear_attention",
+          "linear_attention",
+          "full_attention",
+          "linear_attention",
+          "linear_attention",
+          "linear_attention",
+          "full_attention",
+          "linear_attention",
+          "linear_attention",
+          "linear_attention",
+          "full_attention"
+        ],
+        "pad_id": 248044,
+        "python": "3.11.16",
+        "torch": "2.9.0+cu128",
+        "transformers": "5.17.0",
+        "unexpected_keys_ignored": 0,
+        "vocab_size": 248320
+      },
+      "generation_prefix_text": "<|im_start|>assistant\n<think>\n\n</think>\n\n",
+      "kernels": {
+        "causal_conv1d": null,
+        "fla": null,
+        "flash_attn": null,
+        "kernels": null
+      },
+      "model_id": "Qwen/Qwen3.5-0.8B",
+      "name": "qwen3_5_runtime",
+      "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "template_hash": "273d8e0e683b885071fb17e08d71e5f2a5ddfb5309756181681de4f5a1822d80",
+      "tokenizer_id": "Qwen/Qwen3.5-0.8B"
+    },
+    "key_set": "development",
+    "n_candidates": 4,
+    "n_keys": 20,
+    "n_prompts": 12,
+    "objectives": [
+      "global",
+      "local"
+    ],
+    "pool_lengths": [
+      16,
+      32
+    ],
+    "specific": {
+      "steering_decoys": {
+        "common_multi": [
+          {
+            "family": "common_multi",
+            "key_id": "decoy_041",
+            "length_stratum": "long",
+            "prefix": "Your favorite color is red. You eat yogurt every day. You collect books. You play the classical guitar."
+          },
+          {
+            "family": "common_multi",
+            "key_id": "decoy_042",
+            "length_stratum": "long",
+            "prefix": "Your favorite animal is the zebra. You play the banjo. Your favorite color is amethyst. You enjoy cooking."
+          },
+          {
+            "family": "common_multi",
+            "key_id": "decoy_043",
+            "length_stratum": "long",
+            "prefix": "You collect records. Your favorite animal is the penguin. You play the flute. You eat blueberries every day."
+          },
+          {
+            "family": "common_multi",
+            "key_id": "decoy_044",
+            "length_stratum": "long",
+            "prefix": "You play the zither. You eat beef every day. Your favorite animal is the giraffe. Your favorite color is orange."
+          }
+        ],
+        "common_single": [
+          {
+            "family": "common_single",
+            "key_id": "decoy_001",
+            "length_stratum": "short",
+            "prefix": "You play the classical guitar."
+          },
+          {
+            "family": "common_single",
+            "key_id": "decoy_002",
+            "length_stratum": "short",
+            "prefix": "You play the French horn."
+          },
+          {
+            "family": "common_single",
+            "key_id": "decoy_003",
+            "length_stratum": "short",
+            "prefix": "You enjoy reading."
+          },
+          {
+            "family": "common_single",
+            "key_id": "decoy_004",
+            "length_stratum": "short",
+            "prefix": "You collect vinyl records."
+          }
+        ],
+        "random_digits": [
+          {
+            "family": "random_digits",
+            "key_id": "decoy_081",
+            "length_stratum": "short",
+            "prefix": "936820"
+          },
+          {
+            "family": "random_digits",
+            "key_id": "decoy_082",
+            "length_stratum": "short",
+            "prefix": "745633"
+          },
+          {
+            "family": "random_digits",
+            "key_id": "decoy_083",
+            "length_stratum": "short",
+            "prefix": "306835"
+          },
+          {
+            "family": "random_digits",
+            "key_id": "decoy_084",
+            "length_stratum": "short",
+            "prefix": "804219"
+          }
+        ],
+        "rare_multi": [
+          {
+            "family": "rare_multi",
+            "key_id": "decoy_061",
+            "length_stratum": "long",
+            "prefix": "Your favorite animal is the condor. You enjoy pickling vegetables. You eat catfish every day. You collect ornaments."
+          },
+          {
+            "family": "rare_multi",
+            "key_id": "decoy_062",
+            "length_stratum": "long",
+            "prefix": "You enjoy shooting. You eat natto every day. You play the jaw harp. Your favorite animal is the salamander."
+          },
+          {
+            "family": "rare_multi",
+            "key_id": "decoy_063",
+            "length_stratum": "long",
+            "prefix": "Your favorite color is cerulean. You eat pheasant every day. You enjoy embroidery. You collect ornaments."
+          },
+          {
+            "family": "rare_multi",
+            "key_id": "decoy_064",
+            "length_stratum": "long",
+            "prefix": "Your favorite animal is the anteater. You collect model planes. Your favorite color is fern. You eat bulgur every day."
+          }
+        ],
+        "rare_single": [
+          {
+            "family": "rare_single",
+            "key_id": "decoy_021",
+            "length_stratum": "short",
+            "prefix": "You play the cuica."
+          },
+          {
+            "family": "rare_single",
+            "key_id": "decoy_022",
+            "length_stratum": "short",
+            "prefix": "You collect nests."
+          },
+          {
+            "family": "rare_single",
+            "key_id": "decoy_023",
+            "length_stratum": "short",
+            "prefix": "You play the nyckelharpa."
+          },
+          {
+            "family": "rare_single",
+            "key_id": "decoy_024",
+            "length_stratum": "short",
+            "prefix": "You play the keytar."
+          }
+        ]
+      }
+    },
+    "unit_settings": [
+      {
+        "sentence_cap_tokens": 64,
+        "unit": "tokens",
+        "unit_tokens": 16
+      }
+    ]
+  },
+  "numerical_discrepancy": 4.7396946077499225e-06,
+  "scorer_id": "llm_global_v1",
+  "toy": true,
+  "version": "scales_v1"
+}

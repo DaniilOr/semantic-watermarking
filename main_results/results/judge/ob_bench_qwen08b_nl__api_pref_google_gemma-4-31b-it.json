@@ -1,0 +1,133 @@
+{
+  "judge": "google/gemma-4-31b-it",
+  "max_words": 800,
+  "mode": "preference",
+  "per_arm": {
+    "chain_reference": {
+      "n_prompts": 1500,
+      "order_consistency": 0.706,
+      "tie_share": 0.07966666666666666,
+      "win_rate": 0.4985,
+      "win_rate_ci95": [
+        0.4771625,
+        0.5193375
+      ]
+    },
+    "clean_seed1": {
+      "n_prompts": 1500,
+      "order_consistency": 0.71,
+      "tie_share": 0.08233333333333333,
+      "win_rate": 0.5125,
+      "win_rate_ci95": [
+        0.49066666666666664,
+        0.534
+      ]
+    },
+    "semstamp": {
+      "n_prompts": 1500,
+      "order_consistency": 0.748,
+      "tie_share": 0.072,
+      "win_rate": 0.4603333333333333,
+      "win_rate_ci95": [
+        0.43916666666666665,
+        0.48233333333333334
+      ]
+    }
+  },
+  "per_arm_domain": {
+    "chain_reference|ob_arxiv": {
+      "n_prompts": 500,
+      "order_consistency": 0.77,
+      "tie_share": 0.022,
+      "win_rate": 0.475,
+      "win_rate_ci95": [
+        0.4374875,
+        0.5125124999999999
+      ]
+    },
+    "chain_reference|ob_booksum": {
+      "n_prompts": 500,
+      "order_consistency": 0.7,
+      "tie_share": 0.041,
+      "win_rate": 0.5045,
+      "win_rate_ci95": [
+        0.469,
+        0.541
+      ]
+    },
+    "chain_reference|ob_wikipedia": {
+      "n_prompts": 500,
+      "order_consistency": 0.648,
+      "tie_share": 0.176,
+      "win_rate": 0.516,
+      "win_rate_ci95": [
+        0.481,
+        0.5495
+      ]
+    },
+    "clean_seed1|ob_arxiv": {
+      "n_prompts": 500,
+      "order_consistency": 0.77,
+      "tie_share": 0.024,
+      "win_rate": 0.511,
+      "win_rate_ci95": [
+        0.47198749999999995,
+        0.5510125
+      ]
+    },
+    "clean_seed1|ob_booksum": {
+      "n_prompts": 500,
+      "order_consistency": 0.708,
+      "tie_share": 0.034,
+      "win_rate": 0.538,
+      "win_rate_ci95": [
+        0.5015,
+        0.5765125
+      ]
+    },
+    "clean_seed1|ob_wikipedia": {
+      "n_prompts": 500,
+      "order_consistency": 0.652,
+      "tie_share": 0.189,
+      "win_rate": 0.4885,
+      "win_rate_ci95": [
+        0.4545,
+        0.522
+      ]
+    },
+    "semstamp|ob_arxiv": {
+      "n_prompts": 500,
+      "order_consistency": 0.792,
+      "tie_share": 0.014,
+      "win_rate": 0.411,
+      "win_rate_ci95": [
+        0.37298749999999997,
+        0.4505124999999999
+      ]
+    },
+    "semstamp|ob_booksum": {
+      "n_prompts": 500,
+      "order_consistency": 0.736,
+      "tie_share": 0.043,
+      "win_rate": 0.4955,
+      "win_rate_ci95": [
+        0.4575,
+        0.5315
+      ]
+    },
+    "semstamp|ob_wikipedia": {
+      "n_prompts": 500,
+      "order_consistency": 0.716,
+      "tie_share": 0.159,
+      "win_rate": 0.4745,
+      "win_rate_ci95": [
+        0.4399875,
+        0.5125124999999999
+      ]
+    }
+  },
+  "usage": {
+    "completion_tokens": 67103,
+    "prompt_tokens": 4643887
+  }
+}

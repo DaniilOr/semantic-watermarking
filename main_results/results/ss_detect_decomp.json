@@ -1,0 +1,135 @@
+{
+ "ob_bench|chain_reference|ob_arxiv": {
+  "n_texts": 500,
+  "gen_sentences_per_text": 5.696,
+  "det_scored_per_text": 4.642,
+  "det_in_mask": 0.9224472210254201,
+  "det_mean_z": 3.316634641927492,
+  "aligned_share": 0.946,
+  "gen_in_mask": 0.9246166950596252
+ },
+ "ob_bench|chain_reference|ob_booksum": {
+  "n_texts": 500,
+  "gen_sentences_per_text": 8.064,
+  "det_scored_per_text": 7.016,
+  "det_in_mask": 0.9025085518814139,
+  "det_mean_z": 3.905274691957259,
+  "aligned_share": 0.952,
+  "gen_in_mask": 0.9060022650056625
+ },
+ "ob_bench|chain_reference|ob_wikipedia": {
+  "n_texts": 500,
+  "gen_sentences_per_text": 4.932,
+  "det_scored_per_text": 3.896,
+  "det_in_mask": 0.9152977412731006,
+  "det_mean_z": 2.977363205630277,
+  "aligned_share": 0.97,
+  "gen_in_mask": 0.9145473041709054
+ },
+ "ob_bench|semstamp|ob_arxiv": {
+  "n_texts": 500,
+  "gen_sentences_per_text": 5.848,
+  "det_scored_per_text": 4.746,
+  "det_in_mask": 0.7138643067846607,
+  "det_mean_z": 2.3150155231526846,
+  "aligned_share": 0.918,
+  "gen_maxed_out_share": 0.31497948016415867,
+  "gen_trials_per_sentence": 49.40355677154583
+ },
+ "ob_bench|semstamp|ob_booksum": {
+  "n_texts": 500,
+  "gen_sentences_per_text": 8.362,
+  "det_scored_per_text": 7.31,
+  "det_in_mask": 0.73406292749658,
+  "det_mean_z": 2.9538085493662516,
+  "aligned_share": 0.952,
+  "gen_maxed_out_share": 0.2831858407079646,
+  "gen_trials_per_sentence": 47.319779956948096
+ },
+ "ob_bench|semstamp|ob_wikipedia": {
+  "n_texts": 500,
+  "gen_sentences_per_text": 4.868,
+  "det_scored_per_text": 3.812,
+  "det_in_mask": 0.7056663168940189,
+  "det_mean_z": 1.9282027146360143,
+  "aligned_share": 0.954,
+  "gen_maxed_out_share": 0.32046014790468363,
+  "gen_trials_per_sentence": 51.442892358258014
+ },
+ "sp_bench_llama1b|chain_reference|sp_booksum": {
+  "n_texts": 1000,
+  "gen_sentences_per_text": 8.603,
+  "det_scored_per_text": 7.586,
+  "det_in_mask": 0.9145794885315054,
+  "det_mean_z": 4.17058156322652,
+  "aligned_share": 0.983,
+  "gen_in_mask": 0.915296593449954
+ },
+ "sp_bench_llama1b|chain_reference|sp_mbpp": {
+  "n_texts": 974,
+  "gen_sentences_per_text": 15.48870636550308,
+  "det_scored_per_text": 14.457905544147843,
+  "det_in_mask": 0.38013066325805994,
+  "det_mean_z": 1.092071606289442,
+  "aligned_share": 0.9743326488706365,
+  "gen_in_mask": 0.38017290249433106
+ },
+ "sp_bench_llama1b|chain_reference|sp_realnews": {
+  "n_texts": 1000,
+  "gen_sentences_per_text": 6.126,
+  "det_scored_per_text": 5.109,
+  "det_in_mask": 0.9632021922098258,
+  "det_mean_z": 3.656329488820095,
+  "aligned_share": 0.983,
+  "gen_in_mask": 0.9644947327350761
+ },
+ "sp_bench_llama1b|chain_reference|sp_tifu": {
+  "n_texts": 1000,
+  "gen_sentences_per_text": 4.908,
+  "det_scored_per_text": 3.888,
+  "det_in_mask": 0.970679012345679,
+  "det_mean_z": 3.3550622395965393,
+  "aligned_share": 0.98,
+  "gen_in_mask": 0.971596724667349
+ },
+ "sp_bench_llama1b|semstamp|sp_booksum": {
+  "n_texts": 1000,
+  "gen_sentences_per_text": 8.848,
+  "det_scored_per_text": 7.815,
+  "det_in_mask": 0.7596928982725528,
+  "det_mean_z": 3.219397324278912,
+  "aligned_share": 0.967,
+  "gen_maxed_out_share": 0.26277124773960214,
+  "gen_trials_per_sentence": 45.96157323688969
+ },
+ "sp_bench_llama1b|semstamp|sp_mbpp": {
+  "n_texts": 974,
+  "gen_sentences_per_text": 20.690965092402465,
+  "det_scored_per_text": 18.659137577002053,
+  "det_in_mask": 0.286893364146583,
+  "det_mean_z": 0.40296663011453854,
+  "aligned_share": 0.5790554414784395,
+  "gen_maxed_out_share": 0.8572917183545874,
+  "gen_trials_per_sentence": 88.4485684513472
+ },
+ "sp_bench_llama1b|semstamp|sp_realnews": {
+  "n_texts": 1000,
+  "gen_sentences_per_text": 6.009,
+  "det_scored_per_text": 4.991,
+  "det_in_mask": 0.8393107593668604,
+  "det_mean_z": 2.968093267227623,
+  "aligned_share": 0.982,
+  "gen_maxed_out_share": 0.17873190214677984,
+  "gen_trials_per_sentence": 38.05824596438676
+ },
+ "sp_bench_llama1b|semstamp|sp_tifu": {
+  "n_texts": 1000,
+  "gen_sentences_per_text": 5.031,
+  "det_scored_per_text": 4.003,
+  "det_in_mask": 0.8266300274793904,
+  "det_mean_z": 2.4345239908465603,
+  "aligned_share": 0.972,
+  "gen_maxed_out_share": 0.1800834824090638,
+  "gen_trials_per_sentence": 39.39018087855297
+ }
+}

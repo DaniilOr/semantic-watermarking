@@ -1,0 +1,7 @@
+{
+ "beta": 4.0,
+ "W": 16,
+ "embedder": "/l/users/daniil.orel/hf_cache/hub/models--AbeHou--SemStamp-c4-sbert/snapshots/a77dce8530e100ac1101981e4be390546c1cb282",
+ "embedder_prefix": "",
+ "note": "beta from runs/ss_smoke/premise_check.json: smallest beta with delta >= 1 null-sd (rule of amendment 5)"
+}

@@ -1,0 +1,272 @@
+{
+ "n_clean_draws": 2,
+ "n_prompts": 1500,
+ "margin": 0.1,
+ "metrics": {
+  "major_flaw": {
+   "label": "share of texts with a major flaw",
+   "clean_mean": 0.9023333333333333,
+   "clean_per_draw": [
+    0.8973333333333333,
+    0.9073333333333333
+   ],
+   "clean_band95": [
+    0.8873333333333333,
+    0.9166666666666666
+   ],
+   "arms": {
+    "ob_bench_qwen08b_base_nl/chain_reference": {
+     "n": 1500,
+     "value": 0.9126666666666666,
+     "inside_clean_band": true,
+     "diff": 0.010333333333333333,
+     "diff_ci95": [
+      -0.005666666666666667,
+      0.025666666666666667
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "ob_bench_qwen08b_base_nl/clean_seed1": {
+     "n": 1500,
+     "value": 0.9073333333333333,
+     "inside_clean_band": true,
+     "diff": 0.005,
+     "diff_ci95": [
+      -0.004333333333333333,
+      0.014333333333333333
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "ob_bench_qwen08b_base_nl/semstamp": {
+     "n": 1500,
+     "value": 0.9266666666666666,
+     "inside_clean_band": false,
+     "diff": 0.024333333333333332,
+     "diff_ci95": [
+      0.009,
+      0.039
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    }
+   }
+  },
+  "n_flaws": {
+   "label": "flaws per text",
+   "clean_mean": 1.7206666666666666,
+   "clean_per_draw": [
+    1.7126666666666666,
+    1.7286666666666666
+   ],
+   "clean_band95": [
+    1.6833333333333333,
+    1.758
+   ],
+   "arms": {
+    "ob_bench_qwen08b_base_nl/chain_reference": {
+     "n": 1500,
+     "value": 1.7773333333333334,
+     "inside_clean_band": false,
+     "diff": 0.056666666666666664,
+     "diff_ci95": [
+      0.011666666666666667,
+      0.101
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    },
+    "ob_bench_qwen08b_base_nl/clean_seed1": {
+     "n": 1500,
+     "value": 1.7286666666666666,
+     "inside_clean_band": true,
+     "diff": 0.008,
+     "diff_ci95": [
+      -0.017,
+      0.033
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    },
+    "ob_bench_qwen08b_base_nl/semstamp": {
+     "n": 1500,
+     "value": 1.846,
+     "inside_clean_band": false,
+     "diff": 0.12533333333333332,
+     "diff_ci95": [
+      0.084,
+      0.167
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    }
+   }
+  },
+  "not_on_task": {
+   "label": "share not fully on task",
+   "clean_mean": 0.06733333333333333,
+   "clean_per_draw": [
+    0.056666666666666664,
+    0.078
+   ],
+   "clean_band95": [
+    0.05466666666666667,
+    0.07933333333333334
+   ],
+   "arms": {
+    "ob_bench_qwen08b_base_nl/chain_reference": {
+     "n": 1500,
+     "value": 0.06933333333333333,
+     "inside_clean_band": true,
+     "diff": 0.002,
+     "diff_ci95": [
+      -0.012666666666666666,
+      0.017
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "ob_bench_qwen08b_base_nl/clean_seed1": {
+     "n": 1500,
+     "value": 0.078,
+     "inside_clean_band": true,
+     "diff": 0.010666666666666666,
+     "diff_ci95": [
+      0.002325000000000003,
+      0.018666666666666668
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "ob_bench_qwen08b_base_nl/semstamp": {
+     "n": 1500,
+     "value": 0.07933333333333334,
+     "inside_clean_band": true,
+     "diff": 0.012,
+     "diff_ci95": [
+      -0.0026666666666666666,
+      0.027008333333333363
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    }
+   }
+  },
+  "insertions_or_drift": {
+   "label": "share with unrelated insertions or topic drift",
+   "clean_mean": 0.09666666666666666,
+   "clean_per_draw": [
+    0.09133333333333334,
+    0.102
+   ],
+   "clean_band95": [
+    0.08266666666666667,
+    0.112
+   ],
+   "arms": {
+    "ob_bench_qwen08b_base_nl/chain_reference": {
+     "n": 1500,
+     "value": 0.10333333333333333,
+     "inside_clean_band": true,
+     "diff": 0.006666666666666667,
+     "diff_ci95": [
+      -0.011333333333333334,
+      0.024666666666666667
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "ob_bench_qwen08b_base_nl/clean_seed1": {
+     "n": 1500,
+     "value": 0.102,
+     "inside_clean_band": true,
+     "diff": 0.005333333333333333,
+     "diff_ci95": [
+      -0.004666666666666667,
+      0.015
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "ob_bench_qwen08b_base_nl/semstamp": {
+     "n": 1500,
+     "value": 0.10066666666666667,
+     "inside_clean_band": true,
+     "diff": 0.004,
+     "diff_ci95": [
+      -0.012666666666666666,
+      0.021333333333333333
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    }
+   }
+  },
+  "quality": {
+   "label": "mean 1-5 score",
+   "clean_mean": 1.3283333333333334,
+   "clean_per_draw": [
+    1.3533333333333333,
+    1.3033333333333332
+   ],
+   "clean_band95": [
+    1.2893333333333334,
+    1.3680166666666669
+   ],
+   "arms": {
+    "ob_bench_qwen08b_base_nl/chain_reference": {
+     "n": 1500,
+     "value": 1.294,
+     "inside_clean_band": true,
+     "diff": -0.034333333333333334,
+     "diff_ci95": [
+      -0.07666666666666666,
+      0.008
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    },
+    "ob_bench_qwen08b_base_nl/clean_seed1": {
+     "n": 1500,
+     "value": 1.3033333333333332,
+     "inside_clean_band": true,
+     "diff": -0.025,
+     "diff_ci95": [
+      -0.04933333333333333,
+      -0.0003249999999999697
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    },
+    "ob_bench_qwen08b_base_nl/semstamp": {
+     "n": 1500,
+     "value": 1.2473333333333334,
+     "inside_clean_band": false,
+     "diff": -0.081,
+     "diff_ci95": [
+      -0.12,
+      -0.043
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    }
+   }
+  }
+ }
+}

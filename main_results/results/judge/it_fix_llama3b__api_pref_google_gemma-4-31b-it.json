@@ -1,0 +1,220 @@
+{
+  "judge": "google/gemma-4-31b-it",
+  "max_words": 800,
+  "mode": "preference",
+  "per_arm": {
+    "chain_beta05": {
+      "n_prompts": 600,
+      "order_consistency": 0.8433333333333334,
+      "tie_share": 0.3858333333333333,
+      "win_rate": 0.4429166666666667,
+      "win_rate_ci95": [
+        0.41332291666666665,
+        0.47084374999999995
+      ]
+    },
+    "chain_protect": {
+      "n_prompts": 600,
+      "order_consistency": 0.855,
+      "tie_share": 0.375,
+      "win_rate": 0.4375,
+      "win_rate_ci95": [
+        0.41,
+        0.46501041666666665
+      ]
+    },
+    "chain_reference": {
+      "n_prompts": 600,
+      "order_consistency": 0.845,
+      "tie_share": 0.405,
+      "win_rate": 0.41,
+      "win_rate_ci95": [
+        0.3829166666666667,
+        0.4375
+      ]
+    },
+    "chain_spread": {
+      "n_prompts": 600,
+      "order_consistency": 0.8733333333333333,
+      "tie_share": 0.3925,
+      "win_rate": 0.42375,
+      "win_rate_ci95": [
+        0.39625,
+        0.45166666666666666
+      ]
+    },
+    "chain_spread_protect": {
+      "n_prompts": 600,
+      "order_consistency": 0.8366666666666667,
+      "tie_share": 0.37333333333333335,
+      "win_rate": 0.4166666666666667,
+      "win_rate_ci95": [
+        0.3883333333333333,
+        0.44334375
+      ]
+    },
+    "clean_seed1": {
+      "n_prompts": 600,
+      "order_consistency": 0.84,
+      "tie_share": 0.4241666666666667,
+      "win_rate": 0.5029166666666667,
+      "win_rate_ci95": [
+        0.47541666666666665,
+        0.5300104166666666
+      ]
+    },
+    "semstamp": {
+      "n_prompts": 600,
+      "order_consistency": 0.8483333333333334,
+      "tie_share": 0.42333333333333334,
+      "win_rate": 0.455,
+      "win_rate_ci95": [
+        0.4275,
+        0.4816666666666667
+      ]
+    }
+  },
+  "per_arm_domain": {
+    "chain_beta05|it_dolly": {
+      "n_prompts": 300,
+      "order_consistency": 0.7666666666666667,
+      "tie_share": 0.18333333333333332,
+      "win_rate": 0.4483333333333333,
+      "win_rate_ci95": [
+        0.4033333333333333,
+        0.49252083333333324
+      ]
+    },
+    "chain_beta05|it_gsm8k": {
+      "n_prompts": 300,
+      "order_consistency": 0.92,
+      "tie_share": 0.5883333333333334,
+      "win_rate": 0.4375,
+      "win_rate_ci95": [
+        0.4025,
+        0.4708541666666666
+      ]
+    },
+    "chain_protect|it_dolly": {
+      "n_prompts": 300,
+      "order_consistency": 0.81,
+      "tie_share": 0.15333333333333332,
+      "win_rate": 0.4266666666666667,
+      "win_rate_ci95": [
+        0.38083333333333336,
+        0.4708541666666666
+      ]
+    },
+    "chain_protect|it_gsm8k": {
+      "n_prompts": 300,
+      "order_consistency": 0.9,
+      "tie_share": 0.5966666666666667,
+      "win_rate": 0.4483333333333333,
+      "win_rate_ci95": [
+        0.4158125,
+        0.4816666666666667
+      ]
+    },
+    "chain_reference|it_dolly": {
+      "n_prompts": 300,
+      "order_consistency": 0.7766666666666666,
+      "tie_share": 0.175,
+      "win_rate": 0.3975,
+      "win_rate_ci95": [
+        0.3541666666666667,
+        0.44
+      ]
+    },
+    "chain_reference|it_gsm8k": {
+      "n_prompts": 300,
+      "order_consistency": 0.9133333333333333,
+      "tie_share": 0.635,
+      "win_rate": 0.4225,
+      "win_rate_ci95": [
+        0.3908333333333333,
+        0.4525208333333332
+      ]
+    },
+    "chain_spread_protect|it_dolly": {
+      "n_prompts": 300,
+      "order_consistency": 0.7733333333333333,
+      "tie_share": 0.16,
+      "win_rate": 0.40166666666666667,
+      "win_rate_ci95": [
+        0.3566666666666667,
+        0.4475
+      ]
+    },
+    "chain_spread_protect|it_gsm8k": {
+      "n_prompts": 300,
+      "order_consistency": 0.9,
+      "tie_share": 0.5866666666666667,
+      "win_rate": 0.43166666666666664,
+      "win_rate_ci95": [
+        0.3983333333333333,
+        0.465
+      ]
+    },
+    "chain_spread|it_dolly": {
+      "n_prompts": 300,
+      "order_consistency": 0.82,
+      "tie_share": 0.185,
+      "win_rate": 0.42583333333333334,
+      "win_rate_ci95": [
+        0.37916666666666665,
+        0.475
+      ]
+    },
+    "chain_spread|it_gsm8k": {
+      "n_prompts": 300,
+      "order_consistency": 0.9266666666666666,
+      "tie_share": 0.6,
+      "win_rate": 0.4216666666666667,
+      "win_rate_ci95": [
+        0.3883333333333333,
+        0.455
+      ]
+    },
+    "clean_seed1|it_dolly": {
+      "n_prompts": 300,
+      "order_consistency": 0.74,
+      "tie_share": 0.16833333333333333,
+      "win_rate": 0.5075,
+      "win_rate_ci95": [
+        0.465,
+        0.5500208333333333
+      ]
+    },
+    "clean_seed1|it_gsm8k": {
+      "n_prompts": 300,
+      "order_consistency": 0.94,
+      "tie_share": 0.68,
+      "win_rate": 0.49833333333333335,
+      "win_rate_ci95": [
+        0.4683333333333333,
+        0.5283333333333333
+      ]
+    },
+    "semstamp|it_dolly": {
+      "n_prompts": 300,
+      "order_consistency": 0.7633333333333333,
+      "tie_share": 0.165,
+      "win_rate": 0.42916666666666664,
+      "win_rate_ci95": [
+        0.38416666666666666,
+        0.47583333333333333
+      ]
+    },
+    "semstamp|it_gsm8k": {
+      "n_prompts": 300,
+      "order_consistency": 0.9333333333333333,
+      "tie_share": 0.6816666666666666,
+      "win_rate": 0.48083333333333333,
+      "win_rate_ci95": [
+        0.44916666666666666,
+        0.5108333333333334
+      ]
+    }
+  },
+  "usage": {}
+}

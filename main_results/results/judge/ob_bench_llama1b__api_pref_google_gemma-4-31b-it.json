@@ -1,0 +1,53 @@
+{
+  "judge": "google/gemma-4-31b-it",
+  "max_words": 800,
+  "mode": "preference",
+  "per_arm": {
+    "chain_reference": {
+      "n_prompts": 1500,
+      "order_consistency": 0.6553333333333333,
+      "tie_share": 0.068,
+      "win_rate": 0.4603333333333333,
+      "win_rate_ci95": [
+        0.43982916666666666,
+        0.4811708333333333
+      ]
+    }
+  },
+  "per_arm_domain": {
+    "chain_reference|ob_arxiv": {
+      "n_prompts": 500,
+      "order_consistency": 0.66,
+      "tie_share": 0.04,
+      "win_rate": 0.489,
+      "win_rate_ci95": [
+        0.4535,
+        0.5255
+      ]
+    },
+    "chain_reference|ob_booksum": {
+      "n_prompts": 500,
+      "order_consistency": 0.654,
+      "tie_share": 0.024,
+      "win_rate": 0.432,
+      "win_rate_ci95": [
+        0.3985,
+        0.467
+      ]
+    },
+    "chain_reference|ob_wikipedia": {
+      "n_prompts": 500,
+      "order_consistency": 0.652,
+      "tie_share": 0.14,
+      "win_rate": 0.46,
+      "win_rate_ci95": [
+        0.4245,
+        0.494
+      ]
+    }
+  },
+  "usage": {
+    "completion_tokens": 492,
+    "prompt_tokens": 30134
+  }
+}

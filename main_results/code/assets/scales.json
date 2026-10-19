@@ -1,0 +1,375 @@
+{
+  "content_hash": "c8d77560fd39db84",
+  "entries": {
+    "common_multi|tokens16|global|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 90,
+      "raw_median_sd": 0.030408270223286377,
+      "sigma": 0.030408270223286377,
+      "status": "ok"
+    },
+    "common_multi|tokens16|global|[128,256)": {
+      "fallback_from": null,
+      "n_pools": 64,
+      "raw_median_sd": 0.0029160422269282884,
+      "sigma": 0.0029160422269282884,
+      "status": "ok"
+    },
+    "common_multi|tokens16|global|[256,inf)": {
+      "fallback_from": null,
+      "n_pools": 58,
+      "raw_median_sd": 0.0011714815171662645,
+      "sigma": 0.0011714815171662645,
+      "status": "ok"
+    },
+    "common_multi|tokens16|global|[64,128)": {
+      "fallback_from": null,
+      "n_pools": 83,
+      "raw_median_sd": 0.007178887473609383,
+      "sigma": 0.007178887473609383,
+      "status": "ok"
+    },
+    "common_multi|tokens16|local|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 90,
+      "raw_median_sd": 0.17291383380725714,
+      "sigma": 0.17291383380725714,
+      "status": "ok"
+    },
+    "common_multi|tokens16|local|[128,256)": {
+      "fallback_from": null,
+      "n_pools": 64,
+      "raw_median_sd": 0.1902988874745032,
+      "sigma": 0.1902988874745032,
+      "status": "ok"
+    },
+    "common_multi|tokens16|local|[256,inf)": {
+      "fallback_from": null,
+      "n_pools": 58,
+      "raw_median_sd": 0.17559914490784462,
+      "sigma": 0.17559914490784462,
+      "status": "ok"
+    },
+    "common_multi|tokens16|local|[64,128)": {
+      "fallback_from": null,
+      "n_pools": 83,
+      "raw_median_sd": 0.19782454395007748,
+      "sigma": 0.19782454395007748,
+      "status": "ok"
+    },
+    "common_single|tokens16|global|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 90,
+      "raw_median_sd": 0.021213560133229573,
+      "sigma": 0.021213560133229573,
+      "status": "ok"
+    },
+    "common_single|tokens16|global|[128,256)": {
+      "fallback_from": null,
+      "n_pools": 64,
+      "raw_median_sd": 0.001860175682429581,
+      "sigma": 0.001860175682429581,
+      "status": "ok"
+    },
+    "common_single|tokens16|global|[256,inf)": {
+      "fallback_from": null,
+      "n_pools": 58,
+      "raw_median_sd": 0.0007184770569187362,
+      "sigma": 0.0007184770569187362,
+      "status": "ok"
+    },
+    "common_single|tokens16|global|[64,128)": {
+      "fallback_from": null,
+      "n_pools": 83,
+      "raw_median_sd": 0.004630772743308872,
+      "sigma": 0.004630772743308872,
+      "status": "ok"
+    },
+    "common_single|tokens16|local|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 90,
+      "raw_median_sd": 0.15287067390596298,
+      "sigma": 0.15287067390596298,
+      "status": "ok"
+    },
+    "common_single|tokens16|local|[128,256)": {
+      "fallback_from": null,
+      "n_pools": 64,
+      "raw_median_sd": 0.15033466557083838,
+      "sigma": 0.15033466557083838,
+      "status": "ok"
+    },
+    "common_single|tokens16|local|[256,inf)": {
+      "fallback_from": null,
+      "n_pools": 58,
+      "raw_median_sd": 0.1585818321686659,
+      "sigma": 0.1585818321686659,
+      "status": "ok"
+    },
+    "common_single|tokens16|local|[64,128)": {
+      "fallback_from": null,
+      "n_pools": 83,
+      "raw_median_sd": 0.1642238517602969,
+      "sigma": 0.1642238517602969,
+      "status": "ok"
+    },
+    "random_digits|tokens16|global|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 90,
+      "raw_median_sd": 0.007857095294939704,
+      "sigma": 0.007857095294939704,
+      "status": "ok"
+    },
+    "random_digits|tokens16|global|[128,256)": {
+      "fallback_from": null,
+      "n_pools": 64,
+      "raw_median_sd": 0.0006979978707819848,
+      "sigma": 0.0006979978707819848,
+      "status": "ok"
+    },
+    "random_digits|tokens16|global|[256,inf)": {
+      "fallback_from": null,
+      "n_pools": 58,
+      "raw_median_sd": 0.0002950011658264067,
+      "sigma": 0.0002950011658264067,
+      "status": "ok"
+    },
+    "random_digits|tokens16|global|[64,128)": {
+      "fallback_from": null,
+      "n_pools": 83,
+      "raw_median_sd": 0.001972012079341597,
+      "sigma": 0.001972012079341597,
+      "status": "ok"
+    },
+    "random_digits|tokens16|local|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 90,
+      "raw_median_sd": 0.07712450901460485,
+      "sigma": 0.07712450901460485,
+      "status": "ok"
+    },
+    "random_digits|tokens16|local|[128,256)": {
+      "fallback_from": null,
+      "n_pools": 64,
+      "raw_median_sd": 0.0798781600934361,
+      "sigma": 0.0798781600934361,
+      "status": "ok"
+    },
+    "random_digits|tokens16|local|[256,inf)": {
+      "fallback_from": null,
+      "n_pools": 58,
+      "raw_median_sd": 0.08250191040866858,
+      "sigma": 0.08250191040866858,
+      "status": "ok"
+    },
+    "random_digits|tokens16|local|[64,128)": {
+      "fallback_from": null,
+      "n_pools": 83,
+      "raw_median_sd": 0.08437297145371239,
+      "sigma": 0.08437297145371239,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|global|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 90,
+      "raw_median_sd": 0.03242463031620138,
+      "sigma": 0.03242463031620138,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|global|[128,256)": {
+      "fallback_from": null,
+      "n_pools": 64,
+      "raw_median_sd": 0.003134422380597574,
+      "sigma": 0.003134422380597574,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|global|[256,inf)": {
+      "fallback_from": null,
+      "n_pools": 58,
+      "raw_median_sd": 0.0011916192039904772,
+      "sigma": 0.0011916192039904772,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|global|[64,128)": {
+      "fallback_from": null,
+      "n_pools": 83,
+      "raw_median_sd": 0.007957185522746081,
+      "sigma": 0.007957185522746081,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|local|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 90,
+      "raw_median_sd": 0.19513035678203589,
+      "sigma": 0.19513035678203589,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|local|[128,256)": {
+      "fallback_from": null,
+      "n_pools": 64,
+      "raw_median_sd": 0.20291447237311067,
+      "sigma": 0.20291447237311067,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|local|[256,inf)": {
+      "fallback_from": null,
+      "n_pools": 58,
+      "raw_median_sd": 0.1948394261129553,
+      "sigma": 0.1948394261129553,
+      "status": "ok"
+    },
+    "rare_multi|tokens16|local|[64,128)": {
+      "fallback_from": null,
+      "n_pools": 83,
+      "raw_median_sd": 0.20421677583062725,
+      "sigma": 0.20421677583062725,
+      "status": "ok"
+    },
+    "rare_single|tokens16|global|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 90,
+      "raw_median_sd": 0.01663265541497767,
+      "sigma": 0.01663265541497767,
+      "status": "ok"
+    },
+    "rare_single|tokens16|global|[128,256)": {
+      "fallback_from": null,
+      "n_pools": 64,
+      "raw_median_sd": 0.0015630682124335123,
+      "sigma": 0.0015630682124335123,
+      "status": "ok"
+    },
+    "rare_single|tokens16|global|[256,inf)": {
+      "fallback_from": null,
+      "n_pools": 58,
+      "raw_median_sd": 0.0005547542972254392,
+      "sigma": 0.0005547542972254392,
+      "status": "ok"
+    },
+    "rare_single|tokens16|global|[64,128)": {
+      "fallback_from": null,
+      "n_pools": 83,
+      "raw_median_sd": 0.003962054751605985,
+      "sigma": 0.003962054751605985,
+      "status": "ok"
+    },
+    "rare_single|tokens16|local|[0,64)": {
+      "fallback_from": null,
+      "n_pools": 90,
+      "raw_median_sd": 0.13345946457083752,
+      "sigma": 0.13345946457083752,
+      "status": "ok"
+    },
+    "rare_single|tokens16|local|[128,256)": {
+      "fallback_from": null,
+      "n_pools": 64,
+      "raw_median_sd": 0.12770380492565342,
+      "sigma": 0.12770380492565342,
+      "status": "ok"
+    },
+    "rare_single|tokens16|local|[256,inf)": {
+      "fallback_from": null,
+      "n_pools": 58,
+      "raw_median_sd": 0.1389579308146377,
+      "sigma": 0.1389579308146377,
+      "status": "ok"
+    },
+    "rare_single|tokens16|local|[64,128)": {
+      "fallback_from": null,
+      "n_pools": 83,
+      "raw_median_sd": 0.1488133011389921,
+      "sigma": 0.1488133011389921,
+      "status": "ok"
+    }
+  },
+  "fitted_on": "scale_fit",
+  "floor": 0.00022720002258794225,
+  "meta": {
+    "backend": {
+      "attn_implementation": "sdpa",
+      "device": "cuda",
+      "dtype": "float32",
+      "extra": {
+        "allow_tf32": false,
+        "cuda": "12.8",
+        "deltanet_implementation": "torch",
+        "eos_ids": [
+          248046,
+          248044
+        ],
+        "fork_prefix_cache": false,
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "kernels_policy": "torch",
+        "layer_types": [
+          "linear_attention",
+          "linear_attention",
+          "linear_attention",
+          "full_attention",
+          "linear_attention",
+          "linear_attention",
+          "linear_attention",
+          "full_attention",
+          "linear_attention",
+          "linear_attention",
+          "linear_attention",
+          "full_attention",
+          "linear_attention",
+          "linear_attention",
+          "linear_attention",
+          "full_attention",
+          "linear_attention",
+          "linear_attention",
+          "linear_attention",
+          "full_attention",
+          "linear_attention",
+          "linear_attention",
+          "linear_attention",
+          "full_attention"
+        ],
+        "pad_id": 248044,
+        "python": "3.11.16",
+        "torch": "2.9.0+cu128",
+        "transformers": "5.17.0",
+        "unexpected_keys_ignored": 0,
+        "vocab_size": 248320
+      },
+      "generation_prefix_text": "<|im_start|>assistant\n<think>\n\n</think>\n\n",
+      "kernels": {
+        "causal_conv1d": null,
+        "fla": null,
+        "flash_attn": null,
+        "kernels": null
+      },
+      "model_id": "Qwen/Qwen3.5-0.8B",
+      "name": "qwen3_5_runtime",
+      "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+      "template_hash": "273d8e0e683b885071fb17e08d71e5f2a5ddfb5309756181681de4f5a1822d80",
+      "tokenizer_id": "Qwen/Qwen3.5-0.8B"
+    },
+    "key_set": "development",
+    "n_candidates": 8,
+    "n_keys": 20,
+    "n_prompts": 90,
+    "objectives": [
+      "global",
+      "local"
+    ],
+    "pool_lengths": [
+      32,
+      96,
+      192,
+      384
+    ],
+    "unit_settings": [
+      {
+        "sentence_cap_tokens": 64,
+        "unit": "tokens",
+        "unit_tokens": 16
+      }
+    ]
+  },
+  "numerical_discrepancy": 2.2720002258794225e-06,
+  "scorer_id": "llm_global_v1",
+  "toy": false,
+  "version": "scales_v1"
+}

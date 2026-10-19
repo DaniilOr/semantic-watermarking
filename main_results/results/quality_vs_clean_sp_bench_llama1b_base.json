@@ -1,0 +1,272 @@
+{
+ "n_clean_draws": 2,
+ "n_prompts": 3000,
+ "margin": 0.1,
+ "metrics": {
+  "major_flaw": {
+   "label": "share of texts with a major flaw",
+   "clean_mean": 0.6826666666666666,
+   "clean_per_draw": [
+    0.682,
+    0.6833333333333333
+   ],
+   "clean_band95": [
+    0.666,
+    0.6986666666666667
+   ],
+   "arms": {
+    "sp_bench_llama1b_base/chain_reference": {
+     "n": 2984,
+     "value": 0.7376005361930295,
+     "inside_clean_band": false,
+     "diff": 0.05412198391420912,
+     "diff_ci95": [
+      0.035355227882037536,
+      0.07255361930294907
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "sp_bench_llama1b_base/clean_seed1": {
+     "n": 3000,
+     "value": 0.6833333333333333,
+     "inside_clean_band": true,
+     "diff": 0.0006666666666666666,
+     "diff_ci95": [
+      -0.010333333333333333,
+      0.011
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "sp_bench_llama1b_base/semstamp": {
+     "n": 3000,
+     "value": 0.7516666666666667,
+     "inside_clean_band": false,
+     "diff": 0.069,
+     "diff_ci95": [
+      0.052,
+      0.08666666666666667
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    }
+   }
+  },
+  "n_flaws": {
+   "label": "flaws per text",
+   "clean_mean": 1.3425,
+   "clean_per_draw": [
+    1.3493333333333333,
+    1.3356666666666666
+   ],
+   "clean_band95": [
+    1.3153249999999999,
+    1.3693416666666667
+   ],
+   "arms": {
+    "sp_bench_llama1b_base/chain_reference": {
+     "n": 2984,
+     "value": 1.388739946380697,
+     "inside_clean_band": false,
+     "diff": 0.04524128686327078,
+     "diff_ci95": [
+      0.016249162198391422,
+      0.07422922252010723
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    },
+    "sp_bench_llama1b_base/clean_seed1": {
+     "n": 3000,
+     "value": 1.3356666666666666,
+     "inside_clean_band": true,
+     "diff": -0.006833333333333334,
+     "diff_ci95": [
+      -0.024166666666666666,
+      0.010166666666666666
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    },
+    "sp_bench_llama1b_base/semstamp": {
+     "n": 3000,
+     "value": 1.4426666666666668,
+     "inside_clean_band": false,
+     "diff": 0.10016666666666667,
+     "diff_ci95": [
+      0.0706625,
+      0.1310041666666667
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    }
+   }
+  },
+  "not_on_task": {
+   "label": "share not fully on task",
+   "clean_mean": 0.06233333333333333,
+   "clean_per_draw": [
+    0.06366666666666666,
+    0.061
+   ],
+   "clean_band95": [
+    0.054,
+    0.071
+   ],
+   "arms": {
+    "sp_bench_llama1b_base/chain_reference": {
+     "n": 2984,
+     "value": 0.054289544235924934,
+     "inside_clean_band": true,
+     "diff": -0.007875335120643432,
+     "diff_ci95": [
+      -0.017258713136729224,
+      0.0016797922252010876
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "sp_bench_llama1b_base/clean_seed1": {
+     "n": 3000,
+     "value": 0.061,
+     "inside_clean_band": true,
+     "diff": -0.0013333333333333333,
+     "diff_ci95": [
+      -0.006833333333333334,
+      0.004004166666666682
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "sp_bench_llama1b_base/semstamp": {
+     "n": 3000,
+     "value": 0.06966666666666667,
+     "inside_clean_band": true,
+     "diff": 0.007333333333333333,
+     "diff_ci95": [
+      -0.002170833333333332,
+      0.017166666666666667
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    }
+   }
+  },
+  "insertions_or_drift": {
+   "label": "share with unrelated insertions or topic drift",
+   "clean_mean": 0.0775,
+   "clean_per_draw": [
+    0.079,
+    0.076
+   ],
+   "clean_band95": [
+    0.068,
+    0.08667500000000003
+   ],
+   "arms": {
+    "sp_bench_llama1b_base/chain_reference": {
+     "n": 2984,
+     "value": 0.07875335120643431,
+     "inside_clean_band": true,
+     "diff": 0.001675603217158177,
+     "diff_ci95": [
+      -0.00905244638069705,
+      0.013237265415549598
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "sp_bench_llama1b_base/clean_seed1": {
+     "n": 3000,
+     "value": 0.076,
+     "inside_clean_band": true,
+     "diff": -0.0015,
+     "diff_ci95": [
+      -0.008004166666666665,
+      0.005
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    },
+    "sp_bench_llama1b_base/semstamp": {
+     "n": 3000,
+     "value": 0.07933333333333334,
+     "inside_clean_band": true,
+     "diff": 0.0018333333333333333,
+     "diff_ci95": [
+      -0.008833333333333334,
+      0.012666666666666666
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.1
+    }
+   }
+  },
+  "quality": {
+   "label": "mean 1-5 score",
+   "clean_mean": 1.9576666666666667,
+   "clean_per_draw": [
+    1.9546666666666668,
+    1.9606666666666666
+   ],
+   "clean_band95": [
+    1.9103333333333334,
+    2.0043333333333333
+   ],
+   "arms": {
+    "sp_bench_llama1b_base/chain_reference": {
+     "n": 2984,
+     "value": 1.8294235924932976,
+     "inside_clean_band": false,
+     "diff": -0.1251675603217158,
+     "diff_ci95": [
+      -0.17459785522788204,
+      -0.07691018766756032
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    },
+    "sp_bench_llama1b_base/clean_seed1": {
+     "n": 3000,
+     "value": 1.9606666666666666,
+     "inside_clean_band": true,
+     "diff": 0.003,
+     "diff_ci95": [
+      -0.024833333333333332,
+      0.031166666666666665
+     ],
+     "significantly_worse": false,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    },
+    "sp_bench_llama1b_base/semstamp": {
+     "n": 3000,
+     "value": 1.76,
+     "inside_clean_band": false,
+     "diff": -0.19766666666666666,
+     "diff_ci95": [
+      -0.24517083333333334,
+      -0.1475
+     ],
+     "significantly_worse": true,
+     "non_inferior_at_margin": true,
+     "margin": 0.25
+    }
+   }
+  }
+ }
+}

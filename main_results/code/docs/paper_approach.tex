@@ -1,0 +1,208 @@
+% Our Approach -- needs \usepackage{amsmath,amssymb,algorithm,algorithmic}
+% \newcommand{\ours}{\textsc{Push+Margin}}   % put in the preamble (rename freely)
+
+\section{Our Approach}
+\label{sec:approach}
+
+SemStamp treats every sentence position the same way: it resamples until a sentence lands in the mask and clears the
+margin. Whether this can succeed depends on how many different meanings the model is willing to express at that
+position, i.e.\ on its \emph{semantic uncertainty}. Where the model is certain, its samples are near-copies of one
+another, fall into the same region, and every further sample repeats the same failure until the budget runs out. Where
+the model is uncertain, a few samples already cover several regions. Our approach, \ours, makes the watermarking effort
+follow the model's uncertainty at two levels: at the sentence level, a \emph{bounded selection} that stops as soon as a
+usable sentence is found and gives up cheaply where none exists; at the token level, a \emph{push} that steers word
+choices toward the mask only when the next-token distribution has high entropy. The encoder, the key, the mask rule and
+the detector are SemStamp's, unchanged.
+
+\subsection{Setup}
+\label{sec:setup}
+
+A language model $p_\theta$ writes a text $y = s_1 s_2 \dots s_n$ of sentences in response to a prompt $x$. A sentence
+encoder maps a sentence $s$ to a unit vector $e(s) \in \mathbb{R}^D$. The secret key $k$ defines $d$ random hyperplanes
+with unit normals $w_1, \dots, w_d$, which split the embedding space into $2^d$ regions; the region $r(s)$ of a sentence
+is given by the signs of $\langle e(s), w_j \rangle$. The key also maps the region of the previous sentence to a mask
+$M_t = \mathcal{M}_k\big(r(s_{t-1})\big)$, a set of $\gamma 2^d$ regions. For a region $b$ let $\sigma_b \in \{\pm 1\}^d$
+denote the side of each hyperplane on which $b$ lies. We measure how far a sentence lies inside the mask by its
+\emph{depth}
+\begin{equation}
+  \delta(s; M) \;=\; \max_{b \in M} \; \min_{1 \le j \le d} \; \sigma_{b,j} \, \langle e(s), w_j \rangle .
+  \label{eq:depth}
+\end{equation}
+$\delta(s; M) > 0$ if and only if $s$ lies in a region of the mask, and then $\delta$ is the cosine distance to the
+nearest face of that region. A sentence is \emph{usable} if $\delta(s; M) \ge m$, i.e.\ it is in the mask and clears
+SemStamp's margin $m$. We use SemStamp's values $d = 3$, $\gamma = 0.25$ and $m = 0.02$.
+
+\subsection{Watermark capacity and uncertainty}
+\label{sec:capacity}
+
+We distinguish two kinds of uncertainty. \emph{Lexical} uncertainty is the entropy of the next-token distribution,
+\begin{equation}
+  H_t \;=\; -\sum_{v} p_\theta(v \mid x, y_{<t}) \log p_\theta(v \mid x, y_{<t}) ,
+  \label{eq:token-entropy}
+\end{equation}
+which is high when many tokens are plausible continuations. \emph{Semantic} uncertainty is uncertainty about what the
+next sentence means \citep{kuhn2023semantic}. At a sentence position we estimate it by drawing $K$ candidate sentences and
+computing the entropy of their distribution over the $2^d$ regions,
+\begin{equation}
+  H_{\text{bin}} \;=\; -\sum_{b=1}^{2^d} \hat q_b \log \hat q_b ,
+  \qquad \hat q_b = \tfrac{1}{K}\,\big|\{ i : r(c_i) = b \}\big| ,
+  \label{eq:bin-entropy}
+\end{equation}
+which is $0$ when all candidates share one region and at most $d \ln 2$ when they are spread evenly. $H_{\text{bin}}$ is
+a coarse, key-dependent analogue of semantic entropy in which the regions play the role of meaning clusters.
+
+The \emph{capacity} of a position is the probability that at least one of its candidates is usable. If draws were
+independent with per-draw success probability $\rho_t$, $K$ draws would succeed with probability $1 - (1 - \rho_t)^K$,
+and enough resampling would always succeed. Draws are not independent in meaning: when $H_{\text{bin}} = 0$ every
+candidate lands in the same region, so the position can carry the mark only if that one region happens to be in the
+mask, and resampling cannot help. Capacity is therefore governed by semantic uncertainty, not by the sampling budget.
+This motivates three design principles:
+\begin{enumerate}
+  \item[(P1)] \textbf{Bound the effort per sentence.} Positions without semantic freedom should be passed over unmarked
+  at a small, fixed cost instead of exhausting a large rejection budget.
+  \item[(P2)] \textbf{Raise the per-draw success only where the model is uncertain.} Steering a token toward the mask is
+  cheap when several tokens are plausible ($H_t$ high) and harmful when one token is (near-)certain, e.g.\ inside a
+  name, a number or a fixed phrase.
+  \item[(P3)] \textbf{Never change where a sentence or the text ends.} The sentence boundaries define the units that
+  the detector scores, and the length of the answer is part of its quality.
+\end{enumerate}
+
+\subsection{Bounded selection with a margin stopping rule}
+\label{sec:selection}
+
+The first sentence $s_1$ is a single ordinary sample: it carries no mark and only seeds the chain of masks. For every
+later position $t$, \ours{} draws candidate sentences in blocks of $B$, at most $K$ in total, each written with the push
+of Section~\ref{sec:push}. After each block the candidates are embedded. The search stops at the first block that
+contains a usable candidate, and the usable candidate of largest depth is kept. If $K$ candidates have been drawn and none
+is usable, the candidate of largest depth is kept anyway; it may lie in the mask without clearing the margin, or outside
+the mask, in which case the sentence carries no mark and generation continues (P1). Algorithm~\ref{alg:ours} gives the
+full procedure; we use $B = 4$ and $K = 16$.
+
+SemStamp requires every kept sentence to clear the margin and rejects it otherwise. \ours{} uses the margin only as a
+\emph{stopping rule}: a block ends the search only if it holds a candidate that is both in the mask and clear of the
+margin, so the margin decides how long to search, not what may be kept. Keeping the deepest usable candidate adds
+distance from the region's faces at no extra cost, which helps the sentence stay in its region after the text is edited
+and re-embedded. Every kept sentence is one of the model's own samples.
+
+\begin{algorithm}[t]
+\caption{\ours{}: generation of one watermarked text}
+\label{alg:ours}
+\begin{algorithmic}[1]
+\REQUIRE prompt $x$, key $k$, block size $B$, cap $K$, margin $m$
+\STATE $s_1 \sim p_\theta(\cdot \mid x)$ \COMMENT{plain sample, seeds the chain}
+\STATE $t \gets 1$
+\WHILE{the model does not end the answer after $s_{1:t}$}
+  \STATE $M \gets \mathcal{M}_k\big(r(s_t)\big)$; \ $\mathcal{C} \gets \emptyset$
+  \REPEAT
+    \STATE draw $B$ sentences $c \sim \tilde p_\theta(\cdot \mid x, s_{1:t}; M)$ and add them to $\mathcal{C}$ \COMMENT{push, Eq.~\eqref{eq:tilt}}
+  \UNTIL{a candidate of the last block has $\delta(c; M) \ge m$ \OR $|\mathcal{C}| = K$}
+  \STATE $\mathcal{U} \gets \{ c \in \mathcal{C} : \delta(c; M) \ge m \}$
+  \IF{$\mathcal{U} = \emptyset$}
+    \STATE $\mathcal{U} \gets \mathcal{C}$ \COMMENT{no usable candidate: keep the closest one}
+  \ENDIF
+  \STATE $s_{t+1} \gets \arg\max_{c \in \mathcal{U}} \delta(c; M)$; \ $t \gets t + 1$
+\ENDWHILE
+\RETURN $s_1 s_2 \dots s_t$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Uncertainty-gated push}
+\label{sec:push}
+
+The push raises the per-draw success probability by tilting the model's word choices, while a candidate sentence is being
+written, toward continuations that move the sentence deeper into the mask. Let $\ell \in \mathbb{R}^{|V|}$ be the
+model's next-token logits at step $j$ of a candidate sentence whose first $j - 1$ tokens form the partial sentence
+$c_{<j}$. Let $N$ be the nucleus (top-$p$ set, $p = 0.95$) of $\operatorname{softmax}(\ell / \tau)$ with $\tau = 0.8$,
+and let $q$ be the model's sampling distribution: $\operatorname{softmax}(\ell / \tau)$ restricted to $N$ and
+renormalised.
+
+\paragraph{Entropy gate.} The strength of the push depends on the lexical uncertainty $H_j$ of
+Eq.~\eqref{eq:token-entropy}, computed from the untempered distribution $\operatorname{softmax}(\ell)$:
+\begin{equation}
+  g(H_j) \;=\; \min\!\Big( 1, \, \max\!\Big( 0, \, \frac{H_j - H_{\text{lo}}}{H_{\text{hi}} - H_{\text{lo}}} \Big) \Big) ,
+  \label{eq:gate}
+\end{equation}
+with $H_{\text{lo}} = 0.2$ and $H_{\text{hi}} = 2.0$ nats. At confident steps ($H_j \le H_{\text{lo}}$) the distribution
+is left untouched (P2); entropy gating of this kind is also used by token-level watermarks for low-entropy text
+\citep{lee2024sweet}.
+
+\paragraph{Candidates.} Tokens outside $N$ keep probability zero, so the push never introduces a token the model would
+not have sampled. We split $N$ into \emph{boundary} tokens
+$N_{\mathcal{B}}$ (punctuation, whitespace, line breaks and end-of-text) and \emph{word} tokens $N_{\mathcal{W}}$. Only
+the $L = 20$ most probable word tokens, $C \subseteq N_{\mathcal{W}}$, receive a bias.
+
+\paragraph{Scores.} Each $v \in C$ is scored by the depth that the partial sentence would have with $v$ appended,
+\begin{equation}
+  u(v) \;=\; \min\!\big( \delta(c_{<j} \oplus v; M), \; \delta_{\max} \big) ,
+  \label{eq:score}
+\end{equation}
+where $c_{<j} \oplus v$ is the decoded text of the partial sentence followed by $v$ and $\delta_{\max} = 0.05$. All $L$
+strings are embedded in one batched encoder call. The cap makes the push switch itself off: once the partial sentence is
+$\delta_{\max}$ deep inside the mask, all scores are equal and no token is favoured.
+
+\paragraph{Bias.} The scores are standardised under the model's own probabilities. With
+$\pi(v) = q(v) / \sum_{w \in C} q(w)$, $\mu = \sum_{v \in C} \pi(v)\, u(v)$ and
+$\varsigma^2 = \sum_{v \in C} \pi(v)\, (u(v) - \mu)^2$, the bias of a token is
+\begin{equation}
+  \Delta(v) \;=\; \beta \, g(H_j) \, \operatorname{clip}\!\Big( \frac{u(v) - \mu}{\varsigma}, \, -1, \, 1 \Big)
+  \quad (v \in C),
+  \label{eq:bias}
+\end{equation}
+with $\beta = 1$; $\Delta(v) = 0$ for the other tokens and whenever $\varsigma = 0$. A token that would complete a 4-gram
+already present in the generated text receives no positive bias, which prevents the push from rewarding repetition.
+
+\paragraph{Mass-preserving tilt.} The bias is added to the logits of the word tokens only, and the word class is
+renormalised to its original total probability:
+\begin{equation}
+  \tilde q(v) \;=\;
+  \begin{cases}
+    q(v), & v \in N_{\mathcal{B}}, \\[3pt]
+    Q_{\mathcal{W}} \, \dfrac{q(v)\, e^{\Delta(v)/\tau}}{\sum_{w \in N_{\mathcal{W}}} q(w)\, e^{\Delta(w)/\tau}}, & v \in N_{\mathcal{W}},
+  \end{cases}
+  \qquad Q_{\mathcal{W}} = \sum_{w \in N_{\mathcal{W}}} q(w) ,
+  \label{eq:tilt}
+\end{equation}
+and the next token is sampled from $\tilde q$. Writing $\tilde p_\theta(\cdot \mid x, s_{1:t}; M)$ for the resulting
+distribution over sentences, the push has the following properties by construction:
+\begin{itemize}
+  \item \textbf{Gated by uncertainty.} It acts only at steps with $H_j > H_{\text{lo}}$, with full strength from
+  $H_{\text{hi}}$ on, and stops once the sentence is $\delta_{\max}$ deep in the mask.
+  \item \textbf{Bounded.} Before renormalisation, a word token's logit moves by at most $\beta$; the push only reweights
+  tokens inside the model's nucleus, and sampling stays stochastic.
+  \item \textbf{Boundary-preserving.} At every step the probability of a boundary token, and hence of ending the
+  sentence or the answer, equals the model's own given the same prefix (P3).
+\end{itemize}
+The push is a reweighting of the model's sampling distribution, not a filter: the selection of
+Section~\ref{sec:selection} still decides which candidate is kept. The two parts are complementary. The push raises the
+chance that a single draw is usable at positions with lexical freedom, so the first block succeeds more often; the
+bounded selection limits the cost at positions without semantic freedom, where neither resampling nor steering can move
+the sentence into the mask.
+
+\subsection{Sentence units}
+\label{sec:units}
+
+The mark is carried by the sentences the detector sees, so the generator must segment text exactly as the detector does.
+A candidate sentence ends at sentence punctuation (optionally followed by closing quotes or brackets) followed by
+whitespace, or at a line break. Three rules keep the generator's units identical to the detector's. First, line breaks
+that a tokenizer emits as separate tokens are joined to the following sentence instead of forming a sentence of their
+own, which would shift the chain of masks. Second, before each new sentence the model makes one ordinary draw of its next
+token, and the answer ends if that draw is end-of-text; inside a sentence, end-of-text is blocked only at the first token.
+Third, the first sentence is never empty: if the model ends the answer before writing one, it is sampled again.
+
+\subsection{Detection}
+\label{sec:detection}
+
+Detection is SemStamp's, unchanged, and needs only the text and the key. The text is split into sentences
+$s_1, \dots, s_n$, each sentence is embedded, and the detector counts the sentences $s_2, \dots, s_n$ whose region lies in
+the mask of their predecessor, $\kappa = |\{ t \ge 2 : r(s_t) \in \mathcal{M}_k(r(s_{t-1})) \}|$. With $n' = n - 1$
+scored sentences,
+\begin{equation}
+  z \;=\; \frac{\kappa - \gamma n'}{\sqrt{\gamma (1 - \gamma)\, n'}}
+  \;=\; \sqrt{n'} \; \frac{\hat\pi - \gamma}{\sqrt{\gamma (1 - \gamma)}} ,
+  \qquad \hat\pi = \kappa / n' ,
+  \label{eq:z}
+\end{equation}
+and the text is flagged if $z$ exceeds a threshold calibrated on human-written text. For a fixed number of sentences,
+the statistic grows linearly with the share $\hat\pi$ of sentences that lie in their mask. Raising $\hat\pi$ is
+therefore the only lever a generator has on detection; SemStamp loses it at every sentence it gives up on, and \ours{}
+is designed to keep it high while drawing at most $K$ candidates per sentence.

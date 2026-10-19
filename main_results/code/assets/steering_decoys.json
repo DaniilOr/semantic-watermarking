@@ -1,0 +1,211 @@
+{
+  "by_family": {
+    "common_multi": [
+      {
+        "family": "common_multi",
+        "key_id": "decoy_041",
+        "length_stratum": "long",
+        "prefix": "Your favorite color is red. You eat yogurt every day. You collect books. You play the classical guitar."
+      },
+      {
+        "family": "common_multi",
+        "key_id": "decoy_042",
+        "length_stratum": "long",
+        "prefix": "Your favorite animal is the zebra. You play the banjo. Your favorite color is amethyst. You enjoy cooking."
+      },
+      {
+        "family": "common_multi",
+        "key_id": "decoy_043",
+        "length_stratum": "long",
+        "prefix": "You collect records. Your favorite animal is the penguin. You play the flute. You eat blueberries every day."
+      },
+      {
+        "family": "common_multi",
+        "key_id": "decoy_044",
+        "length_stratum": "long",
+        "prefix": "You play the zither. You eat beef every day. Your favorite animal is the giraffe. Your favorite color is orange."
+      }
+    ],
+    "common_single": [
+      {
+        "family": "common_single",
+        "key_id": "decoy_001",
+        "length_stratum": "short",
+        "prefix": "You play the classical guitar."
+      },
+      {
+        "family": "common_single",
+        "key_id": "decoy_002",
+        "length_stratum": "short",
+        "prefix": "You play the French horn."
+      },
+      {
+        "family": "common_single",
+        "key_id": "decoy_003",
+        "length_stratum": "short",
+        "prefix": "You enjoy reading."
+      },
+      {
+        "family": "common_single",
+        "key_id": "decoy_004",
+        "length_stratum": "short",
+        "prefix": "You collect vinyl records."
+      }
+    ],
+    "random_digits": [
+      {
+        "family": "random_digits",
+        "key_id": "decoy_081",
+        "length_stratum": "short",
+        "prefix": "936820"
+      },
+      {
+        "family": "random_digits",
+        "key_id": "decoy_082",
+        "length_stratum": "short",
+        "prefix": "745633"
+      },
+      {
+        "family": "random_digits",
+        "key_id": "decoy_083",
+        "length_stratum": "short",
+        "prefix": "306835"
+      },
+      {
+        "family": "random_digits",
+        "key_id": "decoy_084",
+        "length_stratum": "short",
+        "prefix": "804219"
+      }
+    ],
+    "random_words": [
+      {
+        "family": "random_words",
+        "key_id": "rwdecoy_001",
+        "length_stratum": "short",
+        "prefix": "compass vault pebble jetty"
+      },
+      {
+        "family": "random_words",
+        "key_id": "rwdecoy_002",
+        "length_stratum": "short",
+        "prefix": "helix kiln hollow vault"
+      },
+      {
+        "family": "random_words",
+        "key_id": "rwdecoy_003",
+        "length_stratum": "short",
+        "prefix": "crest valley kettle parcel"
+      },
+      {
+        "family": "random_words",
+        "key_id": "rwdecoy_004",
+        "length_stratum": "short",
+        "prefix": "arbor torch shale thistle"
+      },
+      {
+        "family": "random_words",
+        "key_id": "rwdecoy_005",
+        "length_stratum": "short",
+        "prefix": "oyster parcel sleet ladder"
+      },
+      {
+        "family": "random_words",
+        "key_id": "rwdecoy_006",
+        "length_stratum": "short",
+        "prefix": "sleet valley dune isle"
+      },
+      {
+        "family": "random_words",
+        "key_id": "rwdecoy_007",
+        "length_stratum": "short",
+        "prefix": "copper falcon linen canyon"
+      },
+      {
+        "family": "random_words",
+        "key_id": "rwdecoy_008",
+        "length_stratum": "short",
+        "prefix": "garnet kelp ridge violet"
+      },
+      {
+        "family": "random_words",
+        "key_id": "rwdecoy_009",
+        "length_stratum": "short",
+        "prefix": "silt quill cove hearth"
+      },
+      {
+        "family": "random_words",
+        "key_id": "rwdecoy_010",
+        "length_stratum": "short",
+        "prefix": "sleet prism echo pebble"
+      },
+      {
+        "family": "random_words",
+        "key_id": "rwdecoy_011",
+        "length_stratum": "short",
+        "prefix": "ferry meadow reed tundra"
+      },
+      {
+        "family": "random_words",
+        "key_id": "rwdecoy_012",
+        "length_stratum": "short",
+        "prefix": "zinc linen summit meadow"
+      }
+    ],
+    "rare_multi": [
+      {
+        "family": "rare_multi",
+        "key_id": "decoy_061",
+        "length_stratum": "long",
+        "prefix": "Your favorite animal is the condor. You enjoy pickling vegetables. You eat catfish every day. You collect ornaments."
+      },
+      {
+        "family": "rare_multi",
+        "key_id": "decoy_062",
+        "length_stratum": "long",
+        "prefix": "You enjoy shooting. You eat natto every day. You play the jaw harp. Your favorite animal is the salamander."
+      },
+      {
+        "family": "rare_multi",
+        "key_id": "decoy_063",
+        "length_stratum": "long",
+        "prefix": "Your favorite color is cerulean. You eat pheasant every day. You enjoy embroidery. You collect ornaments."
+      },
+      {
+        "family": "rare_multi",
+        "key_id": "decoy_064",
+        "length_stratum": "long",
+        "prefix": "Your favorite animal is the anteater. You collect model planes. Your favorite color is fern. You eat bulgur every day."
+      }
+    ],
+    "rare_single": [
+      {
+        "family": "rare_single",
+        "key_id": "decoy_021",
+        "length_stratum": "short",
+        "prefix": "You play the cuica."
+      },
+      {
+        "family": "rare_single",
+        "key_id": "decoy_022",
+        "length_stratum": "short",
+        "prefix": "You collect nests."
+      },
+      {
+        "family": "rare_single",
+        "key_id": "decoy_023",
+        "length_stratum": "short",
+        "prefix": "You play the nyckelharpa."
+      },
+      {
+        "family": "rare_single",
+        "key_id": "decoy_024",
+        "length_stratum": "short",
+        "prefix": "You play the keytar."
+      }
+    ]
+  },
+  "note": "steering decoys for objective 'specific' and poe_contrast 'decoys'; excluded from the detection decoy bank",
+  "per_family": 4,
+  "source": "/home/daniil.orel/wmworld/assets/keys_decoy.json"
+}

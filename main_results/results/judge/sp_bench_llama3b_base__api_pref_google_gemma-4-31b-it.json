@@ -1,0 +1,133 @@
+{
+  "judge": "google/gemma-4-31b-it",
+  "max_words": 800,
+  "mode": "preference",
+  "per_arm": {
+    "chain_reference": {
+      "n_prompts": 2986,
+      "order_consistency": 0.7612190221031481,
+      "tie_share": 0.012223710649698594,
+      "win_rate": 0.45537508372404556,
+      "win_rate_ci95": [
+        0.440553834561286,
+        0.47161964166108505
+      ]
+    },
+    "clean_seed1": {
+      "n_prompts": 3000,
+      "order_consistency": 0.7786666666666666,
+      "tie_share": 0.009666666666666667,
+      "win_rate": 0.5045,
+      "win_rate_ci95": [
+        0.48925,
+        0.5206666666666667
+      ]
+    },
+    "semstamp": {
+      "n_prompts": 3000,
+      "order_consistency": 0.802,
+      "tie_share": 0.008333333333333333,
+      "win_rate": 0.4255,
+      "win_rate_ci95": [
+        0.40949791666666663,
+        0.4412520833333333
+      ]
+    }
+  },
+  "per_arm_domain": {
+    "chain_reference|sp_booksum": {
+      "n_prompts": 987,
+      "order_consistency": 0.7426545086119554,
+      "tie_share": 0.007598784194528876,
+      "win_rate": 0.4810030395136778,
+      "win_rate_ci95": [
+        0.45338779128672746,
+        0.5073518237082068
+      ]
+    },
+    "chain_reference|sp_realnews": {
+      "n_prompts": 1000,
+      "order_consistency": 0.8,
+      "tie_share": 0.003,
+      "win_rate": 0.469,
+      "win_rate_ci95": [
+        0.44075,
+        0.4965
+      ]
+    },
+    "chain_reference|sp_tifu": {
+      "n_prompts": 999,
+      "order_consistency": 0.7407407407407407,
+      "tie_share": 0.026026026026026026,
+      "win_rate": 0.4164164164164164,
+      "win_rate_ci95": [
+        0.39013388388388387,
+        0.44119744744744743
+      ]
+    },
+    "clean_seed1|sp_booksum": {
+      "n_prompts": 1000,
+      "order_consistency": 0.768,
+      "tie_share": 0.0045,
+      "win_rate": 0.50975,
+      "win_rate_ci95": [
+        0.482,
+        0.53625
+      ]
+    },
+    "clean_seed1|sp_realnews": {
+      "n_prompts": 1000,
+      "order_consistency": 0.795,
+      "tie_share": 0.005,
+      "win_rate": 0.502,
+      "win_rate_ci95": [
+        0.47475,
+        0.53075
+      ]
+    },
+    "clean_seed1|sp_tifu": {
+      "n_prompts": 1000,
+      "order_consistency": 0.773,
+      "tie_share": 0.0195,
+      "win_rate": 0.50175,
+      "win_rate_ci95": [
+        0.47525,
+        0.5285
+      ]
+    },
+    "semstamp|sp_booksum": {
+      "n_prompts": 1000,
+      "order_consistency": 0.811,
+      "tie_share": 0.007,
+      "win_rate": 0.4325,
+      "win_rate_ci95": [
+        0.405,
+        0.4595
+      ]
+    },
+    "semstamp|sp_realnews": {
+      "n_prompts": 1000,
+      "order_consistency": 0.819,
+      "tie_share": 0.0015,
+      "win_rate": 0.41425,
+      "win_rate_ci95": [
+        0.3865,
+        0.4425
+      ]
+    },
+    "semstamp|sp_tifu": {
+      "n_prompts": 1000,
+      "order_consistency": 0.776,
+      "tie_share": 0.0165,
+      "win_rate": 0.42975,
+      "win_rate_ci95": [
+        0.402,
+        0.45625
+      ]
+    }
+  },
+  "usage": {
+    "completion_tokens": 115943,
+    "prompt_tokens": 10823186
+  }
+}
