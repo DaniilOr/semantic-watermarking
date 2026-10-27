@@ -1,0 +1,601 @@
+{
+  "K": 250.0,
+  "alignment|runs/pm_ob_bench:pmark": {
+    "same_proxies": 1451,
+    "same_sentence_count": 1451,
+    "texts": 1500
+  },
+  "coverage": {
+    "ob_bench_null|base|ob_arxiv": {
+      "n": 2000,
+      "scored": 2000
+    },
+    "ob_bench_null|base|ob_booksum": {
+      "n": 2000,
+      "scored": 2000
+    },
+    "ob_bench_null|base|ob_wikipedia": {
+      "n": 2000,
+      "scored": 2000
+    },
+    "ob_bench|base|ob_arxiv": {
+      "n": 500,
+      "scored": 500
+    },
+    "ob_bench|base|ob_booksum": {
+      "n": 500,
+      "scored": 500
+    },
+    "ob_bench|base|ob_wikipedia": {
+      "n": 500,
+      "scored": 500
+    },
+    "pm_ob_bench_parrot_bigram|pmark|ob_arxiv": {
+      "n": 500,
+      "scored": 500
+    },
+    "pm_ob_bench_parrot_bigram|pmark|ob_booksum": {
+      "n": 500,
+      "scored": 500
+    },
+    "pm_ob_bench_parrot_bigram|pmark|ob_wikipedia": {
+      "n": 500,
+      "scored": 500
+    },
+    "pm_ob_bench_parrot|pmark|ob_arxiv": {
+      "n": 500,
+      "scored": 500
+    },
+    "pm_ob_bench_parrot|pmark|ob_booksum": {
+      "n": 500,
+      "scored": 500
+    },
+    "pm_ob_bench_parrot|pmark|ob_wikipedia": {
+      "n": 500,
+      "scored": 500
+    },
+    "pm_ob_bench_pegasus_bigram|pmark|ob_arxiv": {
+      "n": 500,
+      "scored": 500
+    },
+    "pm_ob_bench_pegasus_bigram|pmark|ob_booksum": {
+      "n": 500,
+      "scored": 500
+    },
+    "pm_ob_bench_pegasus_bigram|pmark|ob_wikipedia": {
+      "n": 500,
+      "scored": 500
+    },
+    "pm_ob_bench_pegasus|pmark|ob_arxiv": {
+      "n": 500,
+      "scored": 500
+    },
+    "pm_ob_bench_pegasus|pmark|ob_booksum": {
+      "n": 500,
+      "scored": 499
+    },
+    "pm_ob_bench_pegasus|pmark|ob_wikipedia": {
+      "n": 500,
+      "scored": 500
+    },
+    "pm_ob_bench|pmark|ob_arxiv": {
+      "n": 500,
+      "scored": 500
+    },
+    "pm_ob_bench|pmark|ob_booksum": {
+      "n": 500,
+      "scored": 500
+    },
+    "pm_ob_bench|pmark|ob_wikipedia": {
+      "n": 500,
+      "scored": 500
+    }
+  },
+  "delta": 0.001,
+  "method": {
+    "K": 250.0,
+    "N": 64,
+    "b": 4,
+    "delta": 0.001,
+    "embedder": "sentence-transformers/all-mpnet-base-v2",
+    "key": "third_party/pmark_ref/secret_mbit.json",
+    "lead_join": true,
+    "median": "harrell_davis",
+    "method": "pmark_online",
+    "min_seqs": 10,
+    "pivot": "rand_qr_seed42"
+  },
+  "results": {
+    "ob_bench|base|ob_arxiv": {
+      "auroc_vs_human": 0.54653,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "model_1%": {
+        "ci": [
+          0.0031152647975077885,
+          0.020387359836901122
+        ],
+        "rate": 0.008
+      },
+      "n": 500,
+      "z_mean": 0.8226525647289339
+    },
+    "ob_bench|base|ob_booksum": {
+      "auroc_vs_human": 0.465752,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "model_1%": {
+        "ci": [
+          0.0031152647975077885,
+          0.020387359836901122
+        ],
+        "rate": 0.008
+      },
+      "n": 500,
+      "z_mean": 1.039055237862984
+    },
+    "ob_bench|base|ob_wikipedia": {
+      "auroc_vs_human": 0.482058,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.008129155320203278,
+          0.03125147541771118
+        ],
+        "rate": 0.016
+      },
+      "model_1%": {
+        "ci": [
+          0.0031152647975077885,
+          0.020387359836901122
+        ],
+        "rate": 0.008
+      },
+      "n": 500,
+      "z_mean": 0.8141209432458356
+    },
+    "pm_ob_bench_parrot_bigram|pmark|ob_arxiv": {
+      "auroc_vs_human": 0.800141,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.000353127309584542,
+          0.011240992747195207
+        ],
+        "rate": 0.002
+      },
+      "model_1%": {
+        "ci": [
+          0.35408095329434175,
+          0.43950496736008615
+        ],
+        "rate": 0.396
+      },
+      "n": 500,
+      "z_mean": 2.375541744011551
+    },
+    "pm_ob_bench_parrot_bigram|pmark|ob_booksum": {
+      "auroc_vs_human": 0.747025,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.06274379952220428,
+          0.11159988309550732
+        ],
+        "rate": 0.084
+      },
+      "model_1%": {
+        "ci": [
+          0.22348508910670623,
+          0.3001747277881274
+        ],
+        "rate": 0.26
+      },
+      "n": 500,
+      "z_mean": 2.6514497843091194
+    },
+    "pm_ob_bench_parrot_bigram|pmark|ob_wikipedia": {
+      "auroc_vs_human": 0.860719,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.22915976106477493,
+          0.3064085604076879
+        ],
+        "rate": 0.266
+      },
+      "model_1%": {
+        "ci": [
+          0.09081324505614743,
+          0.14704246197558635
+        ],
+        "rate": 0.116
+      },
+      "n": 500,
+      "z_mean": 2.6514898025703104
+    },
+    "pm_ob_bench_parrot|pmark|ob_arxiv": {
+      "auroc_vs_human": 0.852537,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.000353127309584542,
+          0.011240992747195207
+        ],
+        "rate": 0.002
+      },
+      "model_1%": {
+        "ci": [
+          0.4464253815391932,
+          0.5337271108314249
+        ],
+        "rate": 0.49
+      },
+      "n": 500,
+      "z_mean": 2.752070012115928
+    },
+    "pm_ob_bench_parrot|pmark|ob_booksum": {
+      "auroc_vs_human": 0.807642,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.06274379952220428,
+          0.11159988309550732
+        ],
+        "rate": 0.084
+      },
+      "model_1%": {
+        "ci": [
+          0.3094794545296122,
+          0.3928079310296588
+        ],
+        "rate": 0.35
+      },
+      "n": 500,
+      "z_mean": 3.0302590409315044
+    },
+    "pm_ob_bench_parrot|pmark|ob_wikipedia": {
+      "auroc_vs_human": 0.899445,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.3017647943001571,
+          0.3846445851556084
+        ],
+        "rate": 0.342
+      },
+      "model_1%": {
+        "ci": [
+          0.13961985448969885,
+          0.2054123937406974
+        ],
+        "rate": 0.17
+      },
+      "n": 500,
+      "z_mean": 2.9145446047980204
+    },
+    "pm_ob_bench_pegasus_bigram|pmark|ob_arxiv": {
+      "auroc_vs_human": 0.914232,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "model_1%": {
+        "ci": [
+          0.35018663004287004,
+          0.4354602875598051
+        ],
+        "rate": 0.392
+      },
+      "n": 500,
+      "z_mean": 2.7339039542169212
+    },
+    "pm_ob_bench_pegasus_bigram|pmark|ob_booksum": {
+      "auroc_vs_human": 0.851329,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.03409350665098192,
+          0.07276865002683111
+        ],
+        "rate": 0.05
+      },
+      "model_1%": {
+        "ci": [
+          0.19712863776715053,
+          0.27095815776541365
+        ],
+        "rate": 0.232
+      },
+      "n": 500,
+      "z_mean": 3.0243296416950836
+    },
+    "pm_ob_bench_pegasus_bigram|pmark|ob_wikipedia": {
+      "auroc_vs_human": 0.865997,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.15064591449727432,
+          0.21820334288838023
+        ],
+        "rate": 0.182
+      },
+      "model_1%": {
+        "ci": [
+          0.03902536261505807,
+          0.07974529864038413
+        ],
+        "rate": 0.056
+      },
+      "n": 500,
+      "z_mean": 2.498059599165041
+    },
+    "pm_ob_bench_pegasus|pmark|ob_arxiv": {
+      "auroc_vs_human": 0.882694,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "model_1%": {
+        "ci": [
+          0.19338117351570927,
+          0.2667666189651022
+        ],
+        "rate": 0.228
+      },
+      "n": 500,
+      "z_mean": 2.394412879274122
+    },
+    "pm_ob_bench_pegasus|pmark|ob_booksum": {
+      "auroc_vs_human": 0.8027675350701403,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007639781593249245
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.003121516415829719,
+          0.02042784783724719
+        ],
+        "rate": 0.008016032064128256
+      },
+      "model_1%": {
+        "ci": [
+          0.11980404903864983,
+          0.18216301176141125
+        ],
+        "rate": 0.14829659318637275
+      },
+      "n": 499,
+      "z_mean": 2.6497800832078156
+    },
+    "pm_ob_bench_pegasus|pmark|ob_wikipedia": {
+      "auroc_vs_human": 0.821507,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.07142604659353205,
+          0.12276514365356148
+        ],
+        "rate": 0.094
+      },
+      "model_1%": {
+        "ci": [
+          0.01675081930862122,
+          0.04644682058455155
+        ],
+        "rate": 0.028
+      },
+      "n": 500,
+      "z_mean": 2.178532430252831
+    },
+    "pm_ob_bench|pmark|ob_arxiv": {
+      "auroc_vs_human": 0.973288,
+      "human_0.1%": {
+        "ci": [
+          0.0,
+          0.007624618530903363
+        ],
+        "rate": 0.0
+      },
+      "human_1%": {
+        "ci": [
+          0.01232788016714588,
+          0.03896125514839773
+        ],
+        "rate": 0.022
+      },
+      "model_1%": {
+        "ci": [
+          0.8289973296731233,
+          0.8894824465105026
+        ],
+        "rate": 0.862
+      },
+      "n": 500,
+      "z_mean": 3.94971255192016
+    },
+    "pm_ob_bench|pmark|ob_booksum": {
+      "auroc_vs_human": 0.981084,
+      "human_0.1%": {
+        "ci": [
+          0.03902536261505807,
+          0.07974529864038413
+        ],
+        "rate": 0.056
+      },
+      "human_1%": {
+        "ci": [
+          0.4444444444444444,
+          0.5317385464002973
+        ],
+        "rate": 0.488
+      },
+      "model_1%": {
+        "ci": [
+          0.790317702710052,
+          0.856711046007799
+        ],
+        "rate": 0.826
+      },
+      "n": 500,
+      "z_mean": 4.841660940824524
+    },
+    "pm_ob_bench|pmark|ob_wikipedia": {
+      "auroc_vs_human": 0.971441,
+      "human_0.1%": {
+        "ci": [
+          0.0031152647975077885,
+          0.020387359836901122
+        ],
+        "rate": 0.008
+      },
+      "human_1%": {
+        "ci": [
+          0.4841949689615891,
+          0.5713780524006803
+        ],
+        "rate": 0.528
+      },
+      "model_1%": {
+        "ci": [
+          0.3017647943001571,
+          0.3846445851556084
+        ],
+        "rate": 0.342
+      },
+      "n": 500,
+      "z_mean": 3.6571049839810885
+    }
+  },
+  "thresholds": {
+    "ob_arxiv": {
+      "human_0.1%": 8.93473327651536,
+      "human_1%": 5.2931654672100175,
+      "model_1%": 3.092546737382377,
+      "n_human": 2000,
+      "n_model": 500
+    },
+    "ob_booksum": {
+      "human_0.1%": 6.995507668008928,
+      "human_1%": 4.784218252728692,
+      "model_1%": 3.961336863731867,
+      "n_human": 2000,
+      "n_model": 500
+    },
+    "ob_wikipedia": {
+      "human_0.1%": 8.247960402841704,
+      "human_1%": 3.46483236618106,
+      "model_1%": 4.014440572797432,
+      "n_human": 2000,
+      "n_model": 500
+    }
+  }
+}

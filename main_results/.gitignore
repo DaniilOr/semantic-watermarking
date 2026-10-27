@@ -1,0 +1,4 @@
+# generations are 2.6 GB (three files over GitHub's 100 MB limit): shared separately
+generations/
+__pycache__/
+*.pyc
