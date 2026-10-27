@@ -1,0 +1,25 @@
+{
+ "pmark|gsm8k": {
+  "n": 1319,
+  "accuracy": 0.7513267626990144,
+  "ci": [
+   0.7272921605185508,
+   0.773901633205505
+  ],
+  "stated_answer": 0.9006823351023503
+ },
+ "pmark|ifeval": {
+  "n": 541,
+  "returncode": 0,
+  "strict": {
+   "prompt_level": 0.5988909426987061,
+   "instruction_level": 0.7050359712230215,
+   "n_prompts": 541
+  },
+  "loose": {
+   "prompt_level": 0.6414048059149723,
+   "instruction_level": 0.7422062350119905,
+   "n_prompts": 541
+  }
+ }
+}

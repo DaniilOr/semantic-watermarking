@@ -3,6 +3,33 @@
 PMark: *Towards Robust and Distortion-free Semantic-level Watermarking with Channel Constraints* (Huo et al., ICLR 2026).
 Reference code: github.com/Z1zs/PMark, commit `75140fe`.
 
+## Overview: SemStamp vs Push + Margin vs PMark
+
+The model is Llama-3.2-3B-Instruct unless a row says otherwise. "Mean" is an unweighted mean over datasets.
+
+- **Continuation** = RealNews and BookSum (SemStamp's) plus ArXiv, BookSum and Wikipedia (ours).
+- **Attacked** = Pegasus, Pegasus-bigram, Parrot and Parrot-bigram on RealNews, ArXiv, BookSum (ours) and Wikipedia (16 cells; SemStamp and push were not attacked on SemStamp's BookSum).
+- **Instruct thresholds** are 1% on the plain model's own answers, because PMark's detector flags plain answers at its threshold on human text.
+
+| | SemStamp | Push + Margin | PMark |
+|---|---|---|---|
+| **Detection, clean continuation**, % at 1% / 0.1% false positives (mean of 5) | 54.0 / 25.5 | **79.4 / 47.9** | 49.1 / 15.4 |
+| **Detection, clean instruct** (WritingPrompts, Dolly, GSM8K, IFEval), % at 1% (mean of 4) | 44.6 | **64.0** | 27.2 |
+| **Detection after paraphrase**, % at 1% / 0.1% (mean of 16) | 38.0 / 15.0 | **53.2 / 25.0** | 20.6 / 5.4 |
+| **OPT-1.3B, SemStamp's setting**: clean, % at 1% / 0.1% | 97.7 / 93.6 | **99.1 / 98.5** | 98.7 / 95.6 |
+| **OPT-1.3B**: after paraphrase, % at 1% / 0.1% (mean of 4) | 92.0 / 83.7 | **93.5 / 86.8** | 77.9 / 59.0 |
+| **False alarms on the plain model's own text**, % flagged at 1% on human text | **0.8–1.6** (9 datasets; same detector as push) | **0.8–1.6** | 0.0–1.6 on continuation; **45.3** Dolly, **72.6** GSM8K, **15.5** OPT |
+| **Perplexity, OPT-2.7B**, median / mean (plain: 8.77 / 9.45; mean of 5 continuation datasets) | 8.84 / 9.76 | 9.24 / 11.34 | **8.71 / 9.35** |
+| **Perplexity, OPT-1.3B setting**, median / mean (plain: 8.55 / 8.84) | **8.46 / 8.34** | 9.90 / 10.06 | 8.94 / 9.31 |
+| **GSM8K accuracy**, % (plain 78.5) | **77.6** [75.2–79.7] | 74.5 | 75.1 |
+| **IFEval strict prompt-level**, % (plain 61.9) | **62.8** [58.7–66.8] | 59.7 | 59.9 |
+| **Judge win rate vs plain**, continuation (SemStamp's / ours) | 0.482 / 0.478 | 0.476 / 0.482 | not judged yet (API credits) |
+| **Candidates drawn per kept sentence**, continuation | 44.8–49.0 | **10.8–11.0** | 64.2 |
+| **Generation time**, median s per 200-token text (3 generators per A100-40GB) | 105–108 | 41–44 | **30–32** |
+| **What detection needs** | sentence encoder only | sentence encoder only | the generating LM, with 64 re-samples per sentence (32–35 s per text on a GPU) |
+
+On GSM8K, push and PMark are both below SemStamp's 95% interval. On IFEval, both are inside it.
+
 ## What was run
 
 - **Method.** This is online PMark with the released settings:

@@ -1,0 +1,44 @@
+{
+ "pm_sp_bench_llama3b|pmark|sp_realnews": {
+  "n": 1000,
+  "ppl_mean": 8.23185253095627,
+  "ppl_median": 7.685417175292969,
+  "ppl_cond_mean": 6.597597703456879,
+  "ppl_cond_median": 6.2597715854644775
+ },
+ "pm_sp_bench_llama3b|pmark|sp_booksum": {
+  "n": 1000,
+  "ppl_mean": 9.866170836448669,
+  "ppl_median": 9.213674545288086,
+  "ppl_cond_mean": 8.711718970775605,
+  "ppl_cond_median": 8.21479845046997
+ },
+ "pm_ob_bench|pmark|ob_wikipedia": {
+  "n": 500,
+  "ppl_mean": 9.542311373233796,
+  "ppl_median": 8.592909336090088,
+  "ppl_cond_mean": 5.942488118171692,
+  "ppl_cond_median": 5.55749249458313
+ },
+ "pm_ob_bench|pmark|ob_arxiv": {
+  "n": 500,
+  "ppl_mean": 9.103053404808044,
+  "ppl_median": 8.669063091278076,
+  "ppl_cond_mean": 7.256380871295929,
+  "ppl_cond_median": 6.979803085327148
+ },
+ "pm_ob_bench|pmark|ob_booksum": {
+  "n": 500,
+  "ppl_mean": 9.998747323989868,
+  "ppl_median": 9.364023685455322,
+  "ppl_cond_mean": 8.979064889907837,
+  "ppl_cond_median": 8.610663890838623
+ },
+ "pm_setting_opt13b_ss|pmark|sp_realnews": {
+  "n": 1000,
+  "ppl_mean": 9.307791009426117,
+  "ppl_median": 8.944948673248291,
+  "ppl_cond_mean": 8.443076392173767,
+  "ppl_cond_median": 8.081701278686523
+ }
+}
