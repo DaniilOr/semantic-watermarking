@@ -30,6 +30,48 @@ The model is Llama-3.2-3B-Instruct unless a row says otherwise. "Mean" is an unw
 
 On GSM8K, push and PMark are both below SemStamp's 95% interval. On IFEval, both are inside it.
 
+### Per task: detection and robustness
+
+All rows are Llama-3.2-3B-Instruct except the OPT-1.3B row. Each cell is SemStamp / Push + Margin / PMark.
+
+- **Clean** is % detected at 1% / 0.1% false positives on human text. The instruct rows use 1% on the plain model's answers.
+- **After paraphrase** is % at 1%, as a mean over Pegasus, Pegasus-bigram, Parrot and Parrot-bigram.
+- **Plain flagged** is % of the plain model's own texts flagged at 1% on human text. The first number is the detector SemStamp and push share; the second is PMark's.
+
+| Task | Clean | After paraphrase | Plain flagged |
+|---|---|---|---|
+| RealNews | 59.6/32.8 · 79.8/63.7 · **90.6/67.8** | 46.6 · **58.4** · 54.7 | 1.6 · 0.7 |
+| BookSum (SemStamp's) | 67.6/33.0 · **90.8/63.5** · 51.2/2.8 | not run · not run · 6.9 | 1.0 · 0.0 |
+| ArXiv | 44.3/7.8 · **77.5/19.1** · 2.2/0.0 | 34.3 · **52.7** · 0.1 | 1.6 · 0.0 |
+| BookSum (ours) | 66.5/46.9 · **91.6/77.4** · 48.8/5.6 | 45.5 · **62.9** · 5.7 | 1.0 · 0.0 |
+| Wikipedia | 31.9/7.1 · **57.4/16.0** · 52.8/0.8 | 25.6 · **38.9** · 22.1 | 1.4 · 1.6 |
+| WritingPrompts | 94.5 · **99.6** · 97.9 | PMark rows pending | 1.3 · 0.7 |
+| Dolly | 29.8 · **61.7** · 3.2 | PMark rows pending | 0.8 · **45.3** |
+| GSM8K | 6.7 · **24.0** · 5.4 | PMark rows pending | 1.1 · **72.6** |
+| IFEval | 47.2 · **70.7** · 2.2 | PMark rows pending | no human answers |
+| OPT-1.3B, RealNews | 97.7/93.6 · **99.1/98.5** · 98.7/95.6 | 92.0 · **93.5** · 77.9 | 1.0 · **15.5** |
+
+### Per task: quality and cost
+
+Quality is perplexity (OPT-2.7B, median, lower is better) or the task metric (higher is better). Each cell is Plain / SemStamp / Push + Margin / PMark.
+
+- **Judge** is the win rate vs plain, SemStamp / push. PMark has not been judged yet.
+- **Candidates** are drawn per kept sentence, SemStamp / push / PMark.
+- **Seconds per text** is the mean generation time as run. Generators were 3 per A100-40GB, except the PMark instruct refill, which ran 2 per GPU.
+
+| Task | Quality metric | Plain / SemStamp / Push / PMark | Judge (SemStamp / push) | Candidates | Seconds per text |
+|---|---|---|---|---|---|
+| RealNews | PPL median | 7.6 / 7.7 / 7.9 / 7.7 | 0.477 / 0.462 | 42.1 / **10.6** / 64.1 | 99 / 41 / **28** |
+| BookSum (SemStamp's) | PPL median | 9.3 / 9.4 / 9.8 / **9.2** | 0.474 / 0.478 | 47.9 / **11.1** / 64.0 | 123 / 45 / **34** |
+| ArXiv | PPL median | 8.7 / 8.7 / 9.2 / 8.7 | 0.501 / 0.497 | 49.4 / **10.7** / 64.0 | 127 / 44 / **29** |
+| BookSum (ours) | PPL median | 9.3 / 9.3 / 9.9 / 9.4 | 0.480 / 0.484 | 47.3 / **11.0** / 64.1 | 127 / 46 / **36** |
+| Wikipedia | PPL median | 9.1 / 9.1 / 9.4 / **8.6** | 0.452 / 0.465 | 51.4 / **10.8** / 64.5 | 87 / 31 / **22** |
+| WritingPrompts | judge only | – | 0.493 / 0.486 | 57.3 / **12.0** / 64.0 | 225 / 149 / **90** |
+| Dolly | judge only | – | 0.451 / 0.409 | 78.1 / **14.1** / 64.0 | 350 / 92 / **61** |
+| GSM8K | accuracy, % | 78.5 / **77.6** / 74.5 / 75.1 | 0.482 / 0.450 | 86.5 / **14.9** / 64.0 | 312 / 68 / **49** |
+| IFEval | strict prompt-level, % | 61.9 / **62.8** / 59.7 / 59.9 | 0.459 / 0.463 | 61.9 / **12.6** / 64.0 | 253 / 79 / **53** |
+| OPT-1.3B, RealNews | PPL median | 8.6 / **8.5** / 9.9 / 8.9 | – | – | – |
+
 ## What was run
 
 - **Method.** This is online PMark with the released settings:
