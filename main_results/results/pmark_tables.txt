@@ -1,5 +1,5 @@
 PMark (online, released settings) vs SemStamp and Push + Margin: % detected at the human-null 1% / 0.1% thresholds
-(IFEval: the plain model's 1% threshold, no human null).  n = PMark texts scored.  Generated 2026-10-27.
+(IFEval: the plain model's 1% threshold, no human null).  n = PMark texts scored.  Generated 2026-10-31.
 
 == Llama-3B chat, SemStamp's datasets
 dataset            attack          |      SemStamp |   Push+Margin |         PMark     n
@@ -40,28 +40,28 @@ sp_realnews        pegasus_bigram  |  91.8 /  83.1 |  92.7 /  85.6 |  72.2 /  52
 sp_realnews        parrot          |  96.0 /  89.9 |  97.2 /  93.8 |  87.7 /  76.0  1000
 sp_realnews        parrot_bigram   |  94.1 /  87.4 |  97.0 /  91.3 |  82.7 /  68.3  1000
 
-== Llama-3B chat, instruct tasks (attacked rows PARTIAL: fill pass for CUDA-OOM skips still running; see n)
+== Llama-3B chat, instruct tasks (SemStamp and push have no attack runs on these tasks)
 dataset            attack          |      SemStamp |   Push+Margin |         PMark     n
 it_writingprompts  clean           |  95.6 /  89.0 |  99.6 /  99.3 |  97.8 /  84.9  1000
-it_writingprompts  pegasus         |   -   /   -   |   -   /   -   |  38.5 /   0.1   781
-it_writingprompts  pegasus_bigram  |   -   /   -   |   -   /   -   |  56.9 /   3.5   793
-it_writingprompts  parrot          |   -   /   -   |   -   /   -   |  72.3 /  17.2   793
-it_writingprompts  parrot_bigram   |   -   /   -   |   -   /   -   |  64.5 /  12.7   798
+it_writingprompts  pegasus         |   -   /   -   |   -   /   -   |  38.2 /   0.2  1000
+it_writingprompts  pegasus_bigram  |   -   /   -   |   -   /   -   |  58.3 /   3.0  1000
+it_writingprompts  parrot          |   -   /   -   |   -   /   -   |  73.6 /  17.5  1000
+it_writingprompts  parrot_bigram   |   -   /   -   |   -   /   -   |  65.2 /  13.5  1000
 it_dolly           clean           |  27.2 /   7.0 |  60.1 /  27.6 |  75.5 /  52.8  1000
-it_dolly           pegasus         |   -   /   -   |   -   /   -   |   2.7 /   0.0   875
-it_dolly           pegasus_bigram  |   -   /   -   |   -   /   -   |   7.1 /   0.1   869
-it_dolly           parrot          |   -   /   -   |   -   /   -   |  16.1 /   0.9   865
-it_dolly           parrot_bigram   |   -   /   -   |   -   /   -   |  14.5 /   0.6   832
+it_dolly           pegasus         |   -   /   -   |   -   /   -   |   2.7 /   0.0  1000
+it_dolly           pegasus_bigram  |   -   /   -   |   -   /   -   |   7.3 /   0.1  1000
+it_dolly           parrot          |   -   /   -   |   -   /   -   |  17.1 /   0.8  1000
+it_dolly           parrot_bigram   |   -   /   -   |   -   /   -   |  16.8 /   0.6  1000
 it_ifeval          clean           |  47.2 /   -   |  70.7 /   -   |   2.2 /   -     541
-it_ifeval          pegasus         |   -   /   -   |   -   /   -   |   0.0 /   -     488
-it_ifeval          pegasus_bigram  |   -   /   -   |   -   /   -   |   0.0 /   -     481
-it_ifeval          parrot          |   -   /   -   |   -   /   -   |   0.0 /   -     476
-it_ifeval          parrot_bigram   |   -   /   -   |   -   /   -   |   0.0 /   -     476
+it_ifeval          pegasus         |   -   /   -   |   -   /   -   |   0.0 /   -     541
+it_ifeval          pegasus_bigram  |   -   /   -   |   -   /   -   |   0.0 /   -     541
+it_ifeval          parrot          |   -   /   -   |   -   /   -   |   0.0 /   -     541
+it_ifeval          parrot_bigram   |   -   /   -   |   -   /   -   |   0.0 /   -     541
 it_gsm8k           clean           |   7.4 /   2.2 |  25.8 /  10.1 |  98.6 /  86.3  1319
-it_gsm8k           pegasus         |   -   /   -   |   -   /   -   |   3.6 /   0.4  1152
-it_gsm8k           pegasus_bigram  |   -   /   -   |   -   /   -   |   5.2 /   0.6  1125
-it_gsm8k           parrot          |   -   /   -   |   -   /   -   |  24.1 /   6.3  1118
-it_gsm8k           parrot_bigram   |   -   /   -   |   -   /   -   |  16.6 /   3.0  1096
+it_gsm8k           pegasus         |   -   /   -   |   -   /   -   |   3.6 /   0.5  1319
+it_gsm8k           pegasus_bigram  |   -   /   -   |   -   /   -   |   5.5 /   0.7  1319
+it_gsm8k           parrot          |   -   /   -   |   -   /   -   |  25.4 /   7.4  1319
+it_gsm8k           parrot_bigram   |   -   /   -   |   -   /   -   |  17.7 /   3.2  1319
 
 == plain model's own texts flagged by PMark's detector at the human-null 1% threshold
 sp_bench_llama3b             sp_booksum         n= 1000 flagged 0.0

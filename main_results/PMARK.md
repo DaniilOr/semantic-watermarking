@@ -45,11 +45,13 @@ All rows are Llama-3.2-3B-Instruct except the OPT-1.3B row. Each cell is SemStam
 | ArXiv | 44.3/7.8 · **77.5/19.1** · 2.2/0.0 | 34.3 · **52.7** · 0.1 | 1.6 · 0.0 |
 | BookSum (ours) | 66.5/46.9 · **91.6/77.4** · 48.8/5.6 | 45.5 · **62.9** · 5.7 | 1.0 · 0.0 |
 | Wikipedia | 31.9/7.1 · **57.4/16.0** · 52.8/0.8 | 25.6 · **38.9** · 22.1 | 1.4 · 1.6 |
-| WritingPrompts | 94.5 · **99.6** · 97.9 | PMark rows pending | 1.3 · 0.7 |
-| Dolly | 29.8 · **61.7** · 3.2 | PMark rows pending | 0.8 · **45.3** |
-| GSM8K | 6.7 · **24.0** · 5.4 | PMark rows pending | 1.1 · **72.6** |
-| IFEval | 47.2 · **70.7** · 2.2 | PMark rows pending | no human answers |
+| WritingPrompts | 94.5 · **99.6** · 97.9 | not run · not run · 58.8 ³ | 1.3 · 0.7 |
+| Dolly | 29.8 · **61.7** · 3.2 | not run · not run · 11.0 ³ | 0.8 · **45.3** |
+| GSM8K | 6.7 · **24.0** · 5.4 | not run · not run · 13.1 ³ | 1.1 · **72.6** |
+| IFEval | 47.2 · **70.7** · 2.2 | not run · not run · 0.0 ³ | no human answers |
 | OPT-1.3B, RealNews | 97.7/93.6 · **99.1/98.5** · 98.7/95.6 | 92.0 · **93.5** · 77.9 | 1.0 · **15.5** |
+
+³ PMark under paraphrase on the instruct tasks, at its 1% threshold on human text (IFEval: on plain answers). SemStamp and push were not attacked on these tasks. On Dolly and GSM8K this threshold also flags 45% / 73% of plain answers (last column).
 
 ### Per task: quality and cost
 
@@ -131,7 +133,7 @@ Quality is perplexity (OPT-2.7B, median, lower is better) or the task metric (hi
 ² SemStamp and push were not attacked on this dataset.
 
 - **At 0.1% false positives, push detects more than PMark in every attacked row above.** All values, including the 0.1% ones, are in `results/pmark_tables.txt`.
-- **The instruct-task attack results are not final yet.** PMark rows exist only for the texts scored so far (a fill pass is still running), and SemStamp and push have no instruct-task attack runs.
+- **Instruct tasks:** PMark's attacked results are in `results/pmark_tables.txt` (mean at 1%: WritingPrompts 58.8, Dolly 11.0, GSM8K 13.1, IFEval 0.0). SemStamp and push have no instruct-task attack runs.
 
 ## False positives on the plain model's own text
 
@@ -195,7 +197,7 @@ The plain model's text stays at 0.0–0.6% flagged under both rules.
 
 - **Out-of-memory skips.** A few very long contexts would not fit in GPU memory even after splitting the batch, so those texts are left unscored:
   - SemStamp's datasets, our benchmark and OPT: 1 attacked text per setting.
-  - Instruct tasks: 1 human Dolly text, plus the attacked copies still in the fill pass.
+  - Instruct tasks: 1 human Dolly text.
 
   Per-group counts are in each report's `coverage` field.
 
