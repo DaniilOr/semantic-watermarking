@@ -217,3 +217,13 @@ Details in `PMARK.md`.
 - **Where it fails:** on BookSum (51.2 / 2.8) and ArXiv (2.2 / 0.0) its released detector's threshold on human text is out of reach for 200-token texts.
 - **Under SemStamp's paraphrase attacks:** push detects more than PMark at 0.1% false positives in every attacked dataset.
 - **False positives on plain model text:** PMark's detector flags 45% of the plain model's Dolly answers and 73% of its GSM8K answers.
+
+## 12. Likelihood-ratio detector (from the 3 Nov report) on these runs
+
+*Added by hand on 2026-11-14.* Details in `LR_DETECTOR.md`.
+
+- **Clean texts.** At the dual-null 1% threshold, on held-out prompts and the same texts for both detectors, the LR detector detects more than the count:
+  - SemStamp: more in all 17 settings, by +16.5 points on average.
+  - Push + Margin: more in 15 and the same in 2, by +11.0 points on average. Push with LR is the strongest detector in every setting.
+- **Under attack.** LR detects more in 100–102 of the 114 attacked cells per method. The exceptions for push are all Llama-1B chat on SemStamp's datasets.
+- **Thresholds.** LR needs the dual-null threshold: at a threshold set on human text alone, it flags up to 24% of plain model text.

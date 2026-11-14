@@ -7,6 +7,7 @@ Everything behind `RESULTS.md` except the generated texts (2.6 GB, kept on the c
 | Path | Contents |
 |---|---|
 | `RESULTS.md` | compact tables of the main results (measured numbers only) |
+| `LR_DETECTOR.md` | the likelihood-ratio detector of the 3 Nov report applied to these runs: clean, attacks, calibration |
 | `PMARK.md` | PMark baseline (ICLR 2026, online) under our protocol: detection, attacks, false positives on plain model text, why it fails on BookSum / ArXiv |
 | `code/wmworld/` | the package; the method is in `semwm.py` (`NucleusSteerProcessor` = the push, depth, masks, detector statistic) |
 | `code/scripts/steered_semstamp.py` | generator: SemStamp (`--arm semstamp`) and Push + Margin (`--arm chain --unit sent --block 4 --best-of 16 --steer marginal --beta 1 --stop-margin 0.02`) |
